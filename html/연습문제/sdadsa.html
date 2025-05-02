@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background: #6c8ea3;
+  padding: 20px;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.banner {
+  background: #ccc;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-content {
+  font-size: 30px;
+  color: #666;
+}
+
+.main {
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  background-color: #e1eef6;
+}
+
+.section {
+  flex: 1;
+  padding: 15px;
+  background-color: #a3c2cc;
+}
+
+.section-a {
+  background-color: #a3b9c2;
+}
+
+.section-b {
+  background-color: #99d3e0;
+}
+
+.article-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.article {
+  background-color: #cfdde3;
+  padding: 15px;
+}
+
+.footer {
+  background-color: #b0e0f2;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+    </style>
+</head>
+<body>
+
+    <header class="header">
+      <h1>Haeder Area</h1>
+      <nav class="nav">
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">JavaScript</a>
+        <a href="#">JQuery</a>
+      </nav>
+    </header>
+  
+    <section class="banner">
+      <div class="banner-content">1000 x 300</div>
+    </section>
+  
+    <section class="main">
+      <div class="section section-a">
+        <h2>Section A</h2>
+        <p>차나는 은은한 향을 좋아하는 사람들이 애용하는 음료로, 뜨거운 물 또는 우유를 부으면 테백의 잎들이 물에 우러나면서 깊고 진한 향이 느껴진다. 커피에 비해 카페인이 적고 종류에 따라 다양한 가향처리가 되어 즐기기도 좋다.</p>
+      </div>
+      <div class="section section-b">
+        <h2>Section B</h2>
+        <p>커피는 진한 향을 좋아하는 사람도 매우 좋아하는 음료 중 하나이다. 다양한 커피의 종류와 추출 방법 등도 취향에 맞는 즐거운 요소다. 실제로 일상에서 다른 곳과의 대화를 시작하는 데 있어 자연스럽고 친숙한 매개이기도 하다.</p>
+      </div>
+      <div class="article-area">
+        <div class="article">
+          <h3>Article A</h3>
+          <p>너무 무겁지 않으며 고급한 느낌을 가지고 있다. 밝은 색이 많은 은은하며 한층 더 있어보이게 해준다.</p>
+        </div>
+        <div class="article">
+          <h3>Article B</h3>
+          <p>드로잉 후 색을 덧칠하고 입체감 작게 내어 은은한 분위기를 더하면 더욱 아름답다.</p>
+        </div>
+      </div>
+    </section>
+  
+    <footer class="footer">
+      <p>[부산IT교육센터] 부산광역시 부산진구 중앙대로 708 부산IT마이스터센터 4F, 5F 부산IT교육센터 T. 051.753.5600</p>
+      <p>COPYRIGHT ⓒ BUSAN HUMAN RESOURCES DEVELOPMENT INSTITUTE. All rights reserved.</p>
+    </footer>
+  
+  </body>
+</html>

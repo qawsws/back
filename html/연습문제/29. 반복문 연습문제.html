@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29. 반복문 연습문제</title>
+</head>
+<body>
+    <script>
+        //  0~100까지 5의 배수의 합을 출력하세요.
+        let total = 0;
+        for(let i=0; i<=100; i+=5){
+            total+=i;
+        }
+        console.log(`1~100까지 5의 배수의 합은 ${total}`);
+        // 구구단 중 5단을 출력하세요.
+        for(let i=1; i<=9; i++){
+            console.log(`5 * ${i} = ${5*i}`);
+        }
+        // 2~9단을 모두 출력하세요.
+        for(let i=2; i<=9; i++){
+            for(let j=1; j<=9; j++){
+                console.log(`${i} * ${j} = ${i*j}`)
+            }
+        }
+        // 삼각형 모양을 출력하세요.
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        for(let i=0; i<5; i++){
+            let star = "";
+            for(let j=0; j<=i; j++){
+                star+="*";
+            }
+            console.log(star);
+        }
+
+        // 역삼각형 모양을 출력하세요
+        // *****
+        // ****
+        // ***
+        // **
+        // *   
+        for(let i=5; i>=1; i--){
+            let star = "";
+            for(let j=0; j<i; j++){
+                star += "*";
+            }
+            console.log(star);
+        }
+        // A배열의 평균을 출력하세요.
+        let arr = [70,60,55,75,95,90,80,80,85,100];
+        let sum = 0;
+        for(let i=0; i<arr.length;i++){
+            sum += arr[i];
+        }
+        console.log(`A배열의 평균 값은 ${sum/arr.length}`);
+
+        //1900년도부터 2025년까지의 윤년을 출력해보자
+        // 윤년의 조건
+        // 400으로 나누어 나머지가 0이면 윤년입니다.
+        // 100으로 나누어 나머지가 0이면 윤년이 아닙니다.
+        // 4로 나누어 나머지가 0이면 윤년입니다.
+        for(let year=1900; year<=2025; year++){
+            if(year%400===0){
+                console.log(`${year}년은 윤년입니다.`);
+            }else if(year%100===0){
+                continue;
+            }else if(year%4 === 0){
+                console.log(`${year}년은 윤년입니다.`);
+            }
+        }
+    </script>
+</body>
+</html>

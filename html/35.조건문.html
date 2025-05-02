@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>35.조건문</title>
+</head>
+<body>
+    <script>
+        // if문 문법
+        // if는 단독으로 사용 가능
+        // else if, else문은 if문 아래에만 사용 가능, 단독 사용 불가능
+        // 조건식중 하나라도 true가 나오면 아래의 조건식은 실행하지 않음
+
+        // if(조건식){
+        //     조건식이 true일때 실행되는 코드
+        //     실행 코드는 여러줄 작성 가능
+        // }else if(조건식){ 위의 조건식에 false가 나오면 elseif를 실행
+        //     조건식이 true일때 실행되는 코드
+        // }else if(조건식){ 위의 두가지 조건식에서 false가 나오면 elseif를 실행
+        //     조건식이 true일때 실행되는 코드
+        // }else{
+        //     위의 조건식이 모두 false일때 실행되는 코드
+        // }
+
+        let score = 75;
+        if(score>=90){
+            console.log("A");
+        }else if(score>=80){
+            console.log("B");
+        }else if(score>=70){
+            console.log("C");
+        }else{
+            console.log("F");
+        }
+        // switch 조건문
+        // switch(변수){
+        //     case 변수와 비교할 값:
+        //         실행할 코드;
+        //         break;
+        //     case 두번째 비교값:
+        //         실행할 코드;
+        //         break;
+        //     default:
+        //         위의 조건에 해당하는 값이 없을때 실행할 코드;
+        //         if문의 else와 같은 역할
+        // }
+        let food = "melon";
+        switch(food){
+            case "melon":
+            case "apple":
+            case "banan":
+                console.log("과일");
+                break;
+            case "carrot":
+                console.log("야채");
+                break;
+            default:
+                console.log("과일도 야채도 아닙니다.");
+        }
+        if(food==='banana' || food==='apple' || foot==='melon' ){
+            console.log("과일")
+        }
+        // 10보다 작으면 월초, 10~20 중순, 20~31월말
+        let day = 10;
+        switch(day){
+            case 1: case 2: case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:
+                console.log("월초");
+                break;
+            case 11: case 12: case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:
+                console.log("중순");
+                break;
+            default:
+                console.log("월말");
+        }
+        if(day>0 && day<=10){
+            console.log("월초");
+        }else if(day>10 && day<=20){
+            console.log("중순");
+        }else{
+            console.log("월말");
+        }
+
+    </script>
+</body>
+</html>

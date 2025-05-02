@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display 스타일</title>
+    <style>
+        div,span {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgb(41, 208, 238);
+        }
+        /* 인라인을 블럭으로 블럭을 인라인으로 변경 가능 */
+        /* display를 변경하지 않고 태그에 특징에 맞게 사용하는 것이 권장됨 */
+        div{display: inline;}
+        span{display: block;}
+        /* inline-block: 가로세로 크기를 가진 inline태그를 사용하고 싶을 때 */
+        div{display: inline-block; width: 100px; height: 100px;}
+        span{display: inline-block; width: 100px; height: 100px;}
+    </style>
+</head>
+<body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <span>span1</span>
+    <span>span2</span>
+    <span>span3</span>
+</body>
+</html>

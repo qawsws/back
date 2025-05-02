@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 파일 미리보기</title>
+</head>
+<body>
+    <div>
+        <img src="" alt="" width="500">
+    </div>
+    <div>
+        <input type="file" name="file" accept="image/*" onchange="handleimgchange()">
+    </div>
+    <script>
+        const handleimgchange = () =>{
+            const imgfile = document.querySelector("[type='file']").files[0];
+            console.log(imgfile);
+            const imgtag = document.querySelector("img");
+            if(imgfile){
+                // filereader : javascript 파일을 읽기위한 api
+                const reader = new FileReader();
+                // filereader를 실행때의 동작 설정
+                reader.onload = (e) => {
+                    // readasdateurl 메서드가 실행되면 src에 파일데이터 저장
+                    imgtag.src = e.target.result;
+                    // display css를 block으로 설정하여 화면에 표시
+                    imgtag.style.display = 'block';
+                }
+                // 파일을 base64로 읽어 위의 reader.onload의 e에 저장하여 실행
+                reader.readAsDataURL(imgfile);
+            }else{
+                imgtag.src ="";
+                imgtag.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

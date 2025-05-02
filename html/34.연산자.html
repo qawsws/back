@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+<body>
+    <script>
+        // 산술연산자 : +,-,*,/,%,**,++,--
+        // % : 5/2의 나머지 값을 출력하는 연산자
+        let num = 5%2; //1
+        console.log("5%2=",num);
+        // ** : 3**2;
+        let num2 = 3**2;
+        console.log("3**2=", num2);
+        // ++ : 1을 더해주는 연산자
+        // -- : 1을 뺴주는 연산자
+        let num3 = 10;
+        num3++;
+        console.log(num3);
+        num3--;
+        console.log(num3);
+        // 대입 연산자 : 변수에 값을 저장하는 연산자
+        let value1 = 1; // value1에 1을 대입(저장)
+        value1 += 3; //value1 = value1 + 3 , 결과 : 4
+        value1 -= 1; //value1 = value1 - 1 , 결과 : 3
+        value1 *= 2; //value1 = value1 * 2 , 결과 : 6
+        value1 /= 2; //value1 = value1 / 2 , 결과 : 3
+        value1 %= 2; //value1 = value1 % 2 , 결과 : 1
+        value1 **= 3; //value1 = value1 ** 3 , 결과 : 1
+
+        // 비교 연산자
+        //  == : x와 y같으면 true, 다르면 false를 출력
+        console.log(3==1) // false
+        console.log(3==3) // true
+        // === : 값과 자료형이 모두 같으면 true, 둘 중 하나라도 다르면 false를 출력
+        // 자바스크립트에서 == 보다 ===을 사용합니다.
+        console.log(3==='3') // false 숫자 자료형과 문자자료형의 차이로
+        // !=, !== : x와 y의 값이 같으면 false, 다르면 true
+        console.log(1!=2) // true
+        console.log(2!=2) // false
+        console.log(2!=='2') // true
+        // x > y: x는 y보다 크다
+        // x >= y: x는 y보다 크거나 같다
+        // x < y: x는 y보다 작다
+        // x <= y: x는 y보다 작거나 같다
+        
+        //&& : and 연산자
+        console.log(true && true && true) // true
+        console.log(true && false && false) // false
+        console.log(false && true && true) // false
+        console.log(false && false && false) // false
+        // ||(쉬프트 누르고 백스래시) : or 연산자
+        console.log(true || true || true) // true
+        console.log(true || false || false) // true
+        console.log(false || true || true) // true
+        console.log(false || false || false) // false
+        // 삼향 연산자 : 조건식이 하나일때 사용하는 연산자
+        // 조건식 ? true의 결과 : false의 결과
+        let score = 90;
+        let grade = score >= 90 ? 'A+' : 'B';
+        console.log(grade) // A+
+ 
+
+    </script>
+</body>
+</html>

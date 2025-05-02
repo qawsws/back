@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42.노드 추가 삭제하기</title>
+    <style>
+        .comment{
+            border: 5px solid red; 
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>댓글 추가</h3>
+        <input type="text" id="comment">
+        <button onclick="add2()">댓글 추가</button>
+        <button onclick="remove()">마지막 댓글 삭제</button>
+    </div>
+    <div id="commentDiv"></div>
+
+    <script>
+        const remove = () =>{
+            let commentDiv = document.querySelector("#commentDiv");
+            // removechild(자식노드) : 자식노드를 삭제하는 메서드
+            let lastchild = commentDiv.lastChild;
+            commentDiv.removeChild(lastchild);
+        }
+        const add = () =>{
+            let commentTag = document.createElement("p");
+            let commentText = document.querySelector("#comment").value;
+            let commentTextNode = document.createTextNode(commentText);
+            commentTag.appendChild(commentTextNode);
+            let commentDiv = document.querySelector("#commentDiv");
+            commentDiv.appendChild(commentTag);
+        }
+        const add2 = () =>{
+            let commentTag = document.createElement("p");
+            let commentText = document.querySelector("#comment").value;
+            commentTag.innerHTML = `<a href="#" class="comment">${commentText}</a>`;
+            let commentDiv = document.querySelector("#commentDiv");
+            commentDiv.appendChild(commentTag);
+        }
+    
+        // 노드 추가 삭제하기
+        // 노드 생성하기
+        // createElement() : 요소 노드 생성하기, 태그 생성 하기
+        const divTag = document.createElement("div");
+        console.log(divTag);
+        // createTextNode() : 태그 안에 들어가는 텍스트 생성
+        const textNode = document.createTextNode("노드 추가 삭제하기");
+        // createAttribute() : 속성 생성하기
+        const idAttribute = document.createAttribute("id");
+        idAttribute.value = "wrap";
+        // appendChild() : 노드에 자식노드를 연결
+        divTag.appendChild(textNode); // divTag에 textNode를 추가
+        divTag.setAttributeNode(idAttribute);//divTag에 idAttribute를 추가
+        console.log(divTag);
+        // body태그에 divTag를 추가
+        document.body.appendChild(divTag);
+    </script>
+</body>
+</html>

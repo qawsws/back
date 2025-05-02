@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input 태그</title>
+</head>
+<body>
+    <form action="#">
+        <!-- hidden : 화면에는 보이지 않는 데이터만 저장하는 타입으로 -->
+        <!-- submit실행시 hidden에 있는 데이터도 함께 전송 -->
+        <input type="hidden" name="hidden" value="hiddendate">
+        <input  type="text" name="id">
+        <input type="submit" value="전송">
+    </form>
+    <!-- enctype="multipart/form-data" : 파일을 전송하려면 사용해야하는 속성 -->
+    <form action="#" method="post" enctype="multipart/form-data">
+        <!-- multiple : 파일을 여러개 선택할 수 있도록 하는 속성-->
+        <input type="file" name="file" multiple>
+        <button>전송</button>
+    </form>
+    <form action="#">
+        <input type="time" name="time">
+        <input type="datetime-local" name="datetime-local">
+        <input type="submit" value="전송">
+    </form>
+    <form action="#">
+        <input type="date" name="date">
+        <input type="month" name="month">
+        <input type="week" name="week">
+        <input type="image" src="./images/login.png" alt="로그인">
+        <!-- onclick속성 : 자바스크립트를 실행하기위한 속성 -->
+         <!-- window.open('파일이름') : 파일을 새창에 열어주는 자바스크립트 -->
+        <input type="button" value="버튼" onclick="window.open('index.html')">
+        <!-- type : submit, button, reset: type설정을 하지 않으면 submit이 실행됨 -->
+        <button type="button" onclick="window.open('index.html')">버튼태그</button>
+    </form>
+    <form action="#">
+        <input type="number" name="num" min="2" max="10" step="2">
+        <input type="range" name="ran"  min="2" max="10" step="2">
+        <input type="submit" value="전송">
+    </form>
+    <form action="">
+        <!-- radio태그 : 여러개의 내용중 한개만 선택해야하는 경우 사용하는 태그 -->
+        <!-- 똑같은 name속성을 사용하는 것으로 radio태그를 하나로 묶어서 사용 -->
+        <label>선물 포장<input type="radio" name="gift" value="yes"></label>
+        <label>일반 포장<input type="radio" name="gift" value="no"></label>
+        <input type="submit" value="전송">
+    </form>
+    <form action="">
+        <!-- 체크박스의 경우 label태그를 눌러 체크가 가능 합니다. -->
+        <!-- value속성 : 체크가 되었을때 value의 값을 전송함 -->
+        선물용3kg<input type="checkbox" name="check1">
+        <label>선물용5kg<input type="checkbox" name="check2" value="A5"></label>
+        <label>가정용3kg<input type="checkbox" name="check3" value="B3"></label>
+        <label>가정용5kg<input type="checkbox" name="check4" value="C5"></label>
+        <input type="submit" value="전송">
+    </form>
+    <form action="#">
+        <!-- X버튼이 생겨서 내용을 초기화 할 수 있음 -->
+        <input type="search" name="search">
+        <!-- URL형식이 아닐 경우 에러 문구 출력 -->
+        <input type="url" name="url">
+        <!-- 이메일 형식이 아닐 경우 에러 문구 출력 -->
+        <input type="email" name="email">
+        <!-- 특징 없음 -->
+        <input type="tel" name="tel">
+        <input type="submit" value="전송">
+    </form>
+    
+</body>
+</html>

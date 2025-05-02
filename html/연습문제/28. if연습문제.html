@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// # 문제 1
+// # 점수가 90점 이상이면 A
+// # 점수가 80점 이상이면 B
+// # 점수가 70점 이상이면 C
+// # 점수가 60점 이상이면 D
+// # 점수가 60점 미만이라면 F
+// #를 출력하는 코드를 만들어보세요.
+// 점수 = 59
+let score = 95;
+if(score>=95){
+    console.log("A+");
+}else if(score>=90){
+    console.log("A");
+}else if(score>=80){
+    console.log("B");
+}else if(score>=70){
+    console.log("C");
+}else if(score>=60){
+    console.log("D");
+}else{
+    console.log("F");
+}
+
+// #문제 2
+// # 숫자가 짝수인지 홀수인지 구하는 if문을 작성하라
+// 숫자 = 11
+let num = 123489761;
+if(num%2==0){
+    console.log(num+"는 짝수 입니다");
+}else{
+    console.log(num+"는 홀수 입니다");
+}
+
+// #문제3
+// #숫자의값에 20을 더한 값을 출력하라. 단 숫자와 20더한 계산값이
+// # 255를 초과하는 경우 255를 출력한다. 0보다 작은 값일 경우 0을 출력한다.
+// 숫자 = -30
+let value = -15;
+let result = value + 20;
+if(result>255){
+    console.log(255);
+}else if(result<0){
+    console.log(0);
+}else{
+    console.log(result);
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position 스타일</title>
+    <style>
+        .box{width: 100px; height: 100px;}
+        .red-box{background-color: red;}
+        .green-box{background-color: green;}
+        .blue-box{background-color: blue;}
+        .relative{
+            /* 좌표 속성 : 
+            top : 100px  = 아래로 100px만큼 이동 
+            right : 100px = 오른쪽에서 왼쪽으로 100px만큼 이동
+            bottom : 100px = 밑에서 위로 100px만큼 이동
+            left : 100px = 왼쪽에서 오른쪽으로 100px만큼 이동 */
+            /* relative : 자기 자신의 원래 위치에서 좌표 이동 */
+            position:relative;
+            left:100px; top: 100px;
+        }
+        .absolute{
+            position: absolute;
+            /* left,right만 사용시 : 현재 위치에서 left,right로 좌표 이동 */
+            /* 원래 위치에 없는것으로 처리되어 아래의 태그가 위로 올라옴 */
+            left: 300px; 
+            /* top이나 bottom을 사용하면 웹브라우저의 0,0 위치를 기준으로 좌표 이동 */
+            top: 100px;
+        }
+        .fixed{
+            position : fixed;
+            /* 스크롤에 상관없이 모니터를 기준으로 위치를 설정 */
+            /* 좌표 이동 방식은 absolute와 같음 */
+            left: 100px; top: 100px;
+            /* z-index : z축을 설정, 숫자값 */
+            z-index: 100;
+        }
+        .sticky{
+            /* 스크롤 중에 일정 지점이 되면 fixed처럼 작동하는 속성 */
+            /* 좌표 이동 방식은 relative와 같음 */
+            /* 옛날 브라우저(IE)에서는 실행되지 않음 */
+            position: sticky;
+            left:200px; top: 0px;
+        }
+        /* z-index : z축을 설정, 숫자값 자유롭게 설정 */
+        /* 큰값이 앞으로 작은값 뒤로 가도록 설정 */
+        .z1{position: relative; z-index: 10;}
+        .z2{position: absolute; left: 50px; top: 700px; z-index: 2;}
+        .z3{position: absolute; left:70px; top:750px; z-index: 5;}
+
+
+
+    </style>
+</head>
+<body>
+    relative 확인하기(상대적인 위치)
+    
+    <div class="box red-box"></div>
+    <div class="box green-box relative"></div>
+    <div class="box blue-box"></div>
+    <div class="box red-box sticky">sticky</div>
+    absolute 확인하기(절대적인 위치)
+    <div class="box red-box"></div>
+    <div class="box green-box absolute">absolute</div>
+    <div class="box blue-box"></div>
+    <div class="box blue-box fixed">fixed</div>
+    z-index 확인하기
+    <div class="box red-box z1">z1</div>
+    <div class="box green-box z2">z2</div>
+    <div class="box blue-box z3">z3</div>
+    
+    
+</body>
+</html>

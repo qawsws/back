@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 관련 태그</title>
+</head>
+<body>
+    <!-- form태그 : 텍스트박스나 체크박스등을 감싸는 태그로 데이터를 
+     보내는 형식이나 위치를 설정하는 태그 -->
+    <!-- action속성 : 데이터를 보낼 위치를 설정 -->
+    <!-- method속성 : GET방식이나 POST방식을 설정하여 데이터를 보내는 형식을 설정-->
+    <!-- GET방식 : 데이터를 주소창에 설정하여 보내는 방식,  -->
+    <!-- ? : 첫번째 파라미터(데이터)의 시작을 의미하는 기호  -->
+    <!-- name=value -->
+    <!-- & : 다음 파라미터의 시작을 의미하는 기호 -->
+    <!-- 검색, 데이터를 가지고 다른 페이지로 이동할 때 사용  -->
+    <form action="./1.텍스트 관련태그.html" method="GET">
+        <!-- input태그 : 입력을 할 수 있는 공간을 만드는 태그 -->
+        <!-- type속성 : 여러가지 입력 형식 설정 속성, 종류 많음 -->
+        <!-- name속성 : 파리미터의 이름을 설정 속성, 설정하지 않으면 데이터가 보내지지 않음 -->
+        <input type="text" name="id">
+        <input type="password" name="pw">
+        <!-- type="submit" : form태그의 action부분을 실행하는 버튼을 설정 -->
+        <input type="submit" value="전송">
+    </form>
+    <!-- POST방식 : 주소창에 데이터가 보이지 않도록 데이터를 전달하는 방식 -->
+    <!-- 주소창에 데이터가 보이지 않기 때문에 보안이 뛰어남 -->
+    <!-- 회원가입, 회원수정, 결제 같은 보안이 필요한 부분에 사용함 -->
+    <!-- 데이터가 긴 게시글 작성에 사용함 -->
+    <form action="#" method="POST">
+        <input type="text" name="id">
+        <input type="password" name="pw">
+        <input type="submit" value="전송">
+    </form>
+    <h1>레드향 주문하기</h1>
+    <form action="#" method="GET">
+        <fieldset>
+            <legend>회원정보</legend>
+            <label>아이디<input type="text" name="id"></label>
+            <!-- label의 for속성 : input태그의 id속성값을 설정하여 label과 input을 연결  -->
+            <label for="pw">비밀번호</label>
+            <input id="pw" type="password" name="pw">
+        </fieldset>
+        <fieldset>
+            <legend>상품 선택</legend>
+        </fieldset>
+        <fieldset>
+            <legend>배송 정보</legend>
+        </fieldset>
+        
+    </form>
+
+</body>
+</html>

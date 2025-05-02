@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input태그의 주요 속성</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>배송 정보</legend>
+            <ul id="shipping">
+                <li>
+                    <label for="prod">주문 상품</label>
+                    <!-- readonly : 화면에 표시되지만 변경할 수 없도록 하는 속성 -->
+                    <!-- 회원수정의 이름이나 id처럼 변경하면 안되는 데이터를 readonly로 설정 -->
+                    <!-- submit버튼을 실행시 서버로 데이터가 전달됨 -->
+                    <input type="text" id="prod" name="prod" value="상품용 3kg" readonly>
+                </li>
+                <li>
+                    <label for="user-name">이름</label>
+                    <!-- autofocus속성 : autofocus설정이 되어있는 태그를 클릭상태로 만들어주는 속성 -->
+                     <!-- required속성 : 내용을 적지 않으면 submit실행되지 않도록 하고 에러 문구를 출력하는 속성 -->
+                    <input type="text" id="user-name" autofocus required>
+                </li>
+                <li>
+                    <label for="addr">배송 주소</label>
+                    <!-- size속성 : 텍스트 박스의 가로크기 설정 -->
+                     <!-- maxlength속성 : 입력할 수 있은 최대 문자수 설정 -->
+                    <input type="text" size="100" maxlength="10" id="addr" placeholder="예시 : 부산광역시 부산진구">
+                </li>
+                <li>
+                    <label for="phone">연락처</label>
+                    <!-- disabled속성 : submit버튼 실행시 데이터를 전달하지 않음 -->
+                    <input type="tel" id="phone" placeholder="-(하이픈)은 뺴고 입력해주세요" disabled>
+                </li>
+            </ul>
+        </fieldset>
+        <div>
+            <input type="submit" value="주문하기">
+            <input type="reset" value="취소하기">
+        </div>
+    </form>
+</body>
+</html>
