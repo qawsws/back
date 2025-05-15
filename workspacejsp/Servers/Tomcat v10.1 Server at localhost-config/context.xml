@@ -26,4 +26,9 @@
     <!--
     <Manager pathname="SESSIONS.ser" />
     -->
+    <ResourceLink 
+    global="dbcp_myoralce" 
+    name="dbcp_oracle" 
+    type="javax.sql.DataSource"
+    />
 </Context>
