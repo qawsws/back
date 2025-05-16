@@ -9,9 +9,13 @@ import java.sql.Statement;
 import jakarta.servlet.ServletContext;
 
 public class JDBConnect {
+	//데이터베이스 접속 정보
     public Connection con;
+    // 정적 쿼리문을 실행하는 객체
     public Statement stmt;  
-    public PreparedStatement psmt;  
+    //동적 쿼리문을 실행하는 객체
+    public PreparedStatement psmt;
+    
     public ResultSet rs;
 
     // 기본 생성자
