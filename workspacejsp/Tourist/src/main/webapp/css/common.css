@@ -308,7 +308,8 @@ h1.loginTit {text-align:center;}
 h1.loginTit a {display:block;}
 h1.loginTit a img {width:100%;}
 .login_list {width:75%; margin:70px auto 20px;}
-.login_list li {position:relative; margin-bottom:4px; height:54px; box-sizing:border-box; padding-left:50px; border-radius:5px;}
+/* .login_list li {position:relative; margin-bottom:4px; height:54px; box-sizing:border-box; padding-left:50px; border-radius:5px;} */
+.login_list li {position:relative;  margin : 0 auto; text-align: center; margin-bottom:4px; height:54px; box-sizing:border-box;  border-radius:5px;}
 .login_list li a {display:block; height:54px; box-sizing:border-box; line-height:54px; text-align:center; vertical-align:middle; font-size:14px; color:#fff;}
 .login_list li:last-child {margin-bottom:0;}
 .login_list li.kakao {background:#ffea26 url(../img/ico_kakao.png) no-repeat 15px 50%; background-size:45px 45px;}
