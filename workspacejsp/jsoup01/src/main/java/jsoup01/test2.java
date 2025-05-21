@@ -12,7 +12,7 @@ public class test2 {
 
 	public static void main(String[] args) {
 		
-		String url = "https://news.sbs.co.kr/news/newsSection.do?sectionType=02&plink=GNB&cooper=SBSNEWS";
+		String url = "https://news.sbs.co.kr/news/newsSection.do?sectionType=01&plink=GNB&cooper=SBSNEWS";
 		Document doc = null;
 		
 		try {
@@ -25,7 +25,7 @@ public class test2 {
 		
 		Elements elements  = doc.select(".w_news_list > ul > li");
 		
-		String strelements = doc.select(".w_news_list type_issue2 > ul > li").text();
+		String strelements = doc.select(".w_news_list.type_issue2 > ul > li").text();
 		
 		System.out.println(strelements);
 		String sub = "";

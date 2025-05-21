@@ -7,7 +7,10 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,52 +19,41 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 
-class Movie {
-	String name = "";
-	String sub_text = "";
-	String imgAddr = "";
+class Dogs {
+	String img;
+
+	public Dogs(String img) {
+		super();
+		this.img = img;
+	}
 	
 	public void save() throws IOException {
-		String fileName = "";
-		fileName = name.replace("*", "") + ".jpg";
 		
-		URL url = new URL(imgAddr);
-		
-		InputStream is = url.openStream();
-		OutputStream os = new FileOutputStream("img/"+fileName);
-		
-		byte[] b = new byte[2048];
-		int len;
-		while ((len = is.read(b)) != -1) {
-			os.write(b, 0, len);
+		if (img.split(",").length <= 1) {
+			return; 
 		}
-		is.close();
+		
+		String base64 = "";
+		base64 = img.split(",")[1];
+
+		String uuid = UUID.randomUUID().toString();
+		String fileName = "";
+		
+		if (img.split(",")[0].indexOf("jpeg") > -1) {
+			fileName = uuid + ".jpg";
+		}else if(img.split(",")[0].indexOf("png") > -1) {
+			fileName = uuid + ".png";
+		}else if(img.split(",")[0].indexOf("gif") > -1) {
+			fileName = uuid + ".gif";
+		}
+		
+		
+		
+		byte[] imgByte = Base64.getDecoder().decode(base64);
+		
+		OutputStream os = new FileOutputStream("img/"+fileName);
+		os.write(imgByte);
 		os.close();
-	}
-	
-	public Movie(String name, String sub_text, String imgAddr) {
-		super();
-		this.name = name;
-		this.sub_text = sub_text;
-		this.imgAddr = imgAddr;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getSub_text() {
-		return sub_text;
-	}
-	public void setSub_text(String sub_text) {
-		this.sub_text = sub_text;
-	}
-	public String getImgAddr() {
-		return imgAddr;
-	}
-	public void setImgAddr(String imgAddr) {
-		this.imgAddr = imgAddr;
 	}
 	
 }
@@ -72,35 +64,43 @@ public class selenium3 {
 
 	public static void main(String[] args) {
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&qvt=0&query=%EB%B0%95%EC%8A%A4%EC%98%A4%ED%94%BC%EC%8A%A4");
+		driver.get("https://www.google.com/search?newwindow=1&sca_esv=2c9182675fadbcab&hl=ko&sxsrf=AHTn8zoPVvkxv7GZbzpCk6yqhatdiZOyIA:1747808437772&q=%EA%B0%95%EC%95%84%EC%A7%80&udm=2&fbs=ABzOT_CZsxZeNKUEEOfuRMhc2yCI6hbTw9MNVwGCzBkHjFwaK6Wwr2U3Otxxdo7bek3qh0jM1D_pZCsNckRgN6AmwjZfmST0m_jvGek5FeiJmDC0zcKiMp0KimAcWcHBSIgWzKBsEtsn-3YCXXmuOEiA3QqOVmOs0UtF884YwNfHR4Y1goaqReiUNau8OEz0HIN0vDtwbqcfIEOTKcov-hTh4M_vK_XQ5__R-rOjVT7_Gv09eVYR3zw&sa=X&ved=2ahUKEwiqnsbo9bONAxU0sVYBHdtpBW8QtKgLegQIFBAB&cshid=1747808442717855&biw=558&bih=673&dpr=1");
 		System.out.println(driver.getTitle());		
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 		
-		WebElement pannel = driver.findElement(By.cssSelector("._panel"));
-		List<WebElement> listLi = pannel.findElements(By.cssSelector("li"));
+		WebElement div = driver.findElement(By.cssSelector(".MjjYud"));
 		
-		String name = "";
-		String sub_text = "";
-		String imgAddr = "";
+		List<WebElement> we = div.findElements(By.cssSelector(".ob5Hkd"));
 		
-		for (WebElement li : listLi) {
-			try {
-			name = li.findElement(By.cssSelector(".name")).getText();
-			sub_text = li.findElement(By.cssSelector(".sub_text")).getText();
-			imgAddr = li.findElement(By.cssSelector("img")).getDomAttribute("src");
+		for (WebElement webElement : we) {
 			
-			Movie mv = new Movie(name, sub_text, imgAddr);
-			System.out.println(mv.getName()+"\n - "+mv.getSub_text()+"\n - "+mv.getImgAddr());
+			List<WebElement> imgList = webElement.findElements(By.cssSelector("img"));
 			
-			
-				mv.save();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			int i = 0;
+			for (WebElement img : imgList) {
+				Dogs dog = new Dogs(img.getDomAttribute("src"));
+				try {
+					dog.save();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					TimeUnit.SECONDS.sleep((long) 0.2);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(img.getDomAttribute("src"));
+				i++;
+				if (i == 10) {
+					break;
+				}
+				
+				
 			}
-			
 		}
+		
 		
 		driver.quit();
 
