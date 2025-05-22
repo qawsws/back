@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <header id="header">
@@ -7,18 +8,18 @@
 			<!-- header_cont -->
 			<div class="header_cont">
 				<ul class="util clear">
-				 	<li>
-				 		<%if(session.getAttribute("UserName")!=null){%>
-				 		<span style="color:white;">
-				 		<%=session.getAttribute("UserName") %>님 환영합니다.
-				 		</span>
-				 		<%} %>
-				 	</li>
+					<%if(session.getAttribute("userDTO")!=null){ %>
 					<li>
-						<%if(session.getAttribute("UserId")==null){%>
-						<a href="login.jsp">로그인</a>
+						<span style="color:white;">
+						<%=((MemberDTO)session.getAttribute("userDTO")).getName() %>님 환영합니다.
+						</span>
+					</li>
+					<%} %>
+					<li>
+						<%if(session.getAttribute("userDTO")==null){ %>
+							<a href="login.jsp">로그인</a>
 						<%}else{ %>
-						<a href="Logout.jsp">로그아웃</a>
+							<a href="Logout.jsp">로그아웃</a>
 						<%} %>
 					</li>
 					<li><a href="join.jsp">회원가입</a></li>
@@ -37,7 +38,8 @@
 					<li><a href="javascript:;" class="openAll2">고객센터</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                                <li><a href="javascript:;">공지사항</a></li>
+                                <li><a href="/Board_list.jsp">공지사항</a></li>
+                                
                                 <li><a href="javascript:;">문의하기</a></li>
                             </ul>
                         </div>
