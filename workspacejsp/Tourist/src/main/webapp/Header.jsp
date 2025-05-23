@@ -38,8 +38,7 @@
 					<li><a href="javascript:;" class="openAll2">고객센터</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                                <li><a href="/Board_list.jsp">공지사항</a></li>
-                                
+                                <li><a href="Board_list.jsp">공지사항</a></li>
                                 <li><a href="javascript:;">문의하기</a></li>
                             </ul>
                         </div>

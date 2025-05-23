@@ -47,7 +47,8 @@
 		<div class="location_area customer">
 			<div class="box_inner">
 				<h2 class="tit_page">TOURIST <span class="in">in</span> TOUR</h2>
-				<p class="location">고객센터 <span class="path">/</span> 공지사항</p>
+				<p class="location">고객센터 <span class="path">/</span><a href="board_write.jsp">공지사항</a></p>
+
 				<ul class="page_menu clear">
 					<li><a href="#" class="on">공지사항</a></li>
 					<li><a href="#">문의하기</a></li>
@@ -72,8 +73,10 @@
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">제목</th>
+						<th scope="col">아이디</th>
 						<th scope="col">조회수</th>
 						<th scope="col">작성일</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -91,7 +94,7 @@
 				<tr align="center">
 					<td><%=virtualNum%></td>
 					<td align="left">
-						<a href="View.jsp?num=<%=dto.getNum() %>">
+						<a href="board_view.jsp?num=<%=dto.getNum() %>">
 							<%=dto.getTitle()%>
 						</a>
 					</td>

@@ -1,18 +1,15 @@
+<%@page import="board.dto.BoardDTO"%>
+<%@page import="board.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-MemberDTO loginUser = (MemberDTO) session.getAttribute("userDTO");
-if (loginUser == null) {
-%>
-    <script>
-    alert("로그인 후 이용해주십시오");
-    location.href = "login.jsp";
-    </script>
-<%
-    return;
-}
-%>
+    <%
+    String num = request.getParameter("num");
 
+    BoardDAO dao = new BoardDAO();
+    dao.updateVisitCount(Integer.parseInt(num));
+    BoardDTO dto = dao.selectView(Integer.parseInt(num));
+    dao.close();
+    %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,9 +33,9 @@ if (loginUser == null) {
 </ul>
 <!-- wrap -->
 <div id="wrap">
-
-	<%@ include file="Header.jsp"%>
-
+	
+	<%@ include file="Header.jsp" %>
+	
 	<div id="container">
 		<!-- location_area -->
 		<div class="location_area customer">
@@ -54,21 +51,25 @@ if (loginUser == null) {
 		<!-- //location_area -->
 
 		<!-- bodytext_area -->
-		<div class="bodytext_area box_inner">	
-			<form action="boardWrite_process.jsp" method="POST">		
+		<div class="bodytext_area box_inner">			
 			<ul class="bbsview_list">
-					<li class="bbs_title">제목 : <input type="text" name="title" size="100" placeholder="제목을 입력해주세요."></li>
-					<li class="bbs_content">
-						<div class="editer_content">
-							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요."></textarea>
-						</div>
-					</li>
+				<li class="bbs_title"><%=dto.getTitle() %></li>
+				<li class="bbs_hit">작성일 : <span><%=dto.getPostDate() %></span></li>
+				<li class="bbs_date">조회수 : <span><%=dto.getVisitCount() %></span></li>
+				<li class="bbs_content">
+					<div class="editer_content">
+					   <%=dto.getContent().replace("\r\n","<br/>") %>
+					  
+                    </div>
+				</li>
 			</ul>
 			<p class="btn_line txt_right">
-				<input type="submit" value="글쓰기" class="btn_srch">
-				<a href="board_list.html" class="btn_bbs">목록</a>
+				<%if(session.getAttribute("UserId")!=null
+				&& session.getAttribute("UserId").equals(dto.getId())){ %>
+					<a href="board_update.jsp" class="btn_bbs">수정하기</a>
+				<%}%>
+				<a href="board_list.jsp" class="btn_bbs">목록</a>
 			</p>
-			</form>
 			<ul class="near_list mt20">
 				<li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>		
 				<li><h4 class="next">이전글</h4><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
@@ -78,7 +79,8 @@ if (loginUser == null) {
 
 	</div>
 	<!-- //container -->
-<footer>
+
+	<footer>
 		<div class="foot_area box_inner">
 			<ul class="foot_list clear">
 				<li><a href="javascript:;">이용약관</a></li>

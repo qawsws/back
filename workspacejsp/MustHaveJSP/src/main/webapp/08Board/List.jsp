@@ -66,7 +66,8 @@
 		<%}else{
 			int virtualNum = 0;
 			for(BoardDTO dto : boardLists){
-				virtualNum = totalCount--;
+				virtualNum = totalCount;
+				totalCount--;
 				%>
 				<tr align="center">
 					<td><%=virtualNum%></td>

@@ -7,17 +7,13 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	MemberDTO dto = dao.getMember(id, pw);
-	if(dto.getId()!=null){
-		session.setAttribute("userDTO",dto);
+	if(dto.getId() != null){
+		session.setAttribute("userDTO", dto);         
+		session.setAttribute("UserId", dto.getId());  
 		response.sendRedirect("index.jsp");
 	}else{
 		request.setAttribute("loginErrMsg", "아이디나 비밀번호를 확인해주세요.");
-		/* request.getRequestDispatcher("login.jsp").forward(request, response); */
 		%>
 		<jsp:forward page="login.jsp" />
 	<%}
 %>
-
-
-
-
