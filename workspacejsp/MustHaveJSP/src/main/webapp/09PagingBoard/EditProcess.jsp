@@ -1,5 +1,5 @@
-<%@page import="board.dao.BoardDAO"%>
-<%@page import="board.dto.BoardDTO"%>
+<%@page import="model1.board.BoardDAO"%>
+<%@page import="model1.board.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp" %>
@@ -23,7 +23,7 @@ dao.close();
 // UPDATE결과 1이면 정상 실행 그외의 숫자면 에러 발생
 if(affected == 1){
 	// 정상 실행이면 상세보기 페이지로 진행
-	response.sendRedirect("board_view.jsp?num="+num);
+	response.sendRedirect("View.jsp?num="+dto.getNum());
 }else{
 	// 실패했다면 이전 페이지로 뒤로가기를 실행
 	JSFunction.alertBack("수정하기에 실패했습니다.", out);

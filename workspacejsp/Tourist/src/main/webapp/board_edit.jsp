@@ -1,18 +1,27 @@
-<%@page import="board.dto.BoardDTO"%>
 <%@page import="board.dao.BoardDAO"%>
+<%@page import="board.dto.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-    String num = request.getParameter("num");
+<%@ include file="./IsLoggedIn.jsp" %>
 
-    BoardDAO dao = new BoardDAO();
-    // 조회수 1을 증가시키는 메서드
-    dao.updateVisitCount(Integer.parseInt(num));
-    // 데이터 한건을 dto에 저장
-    BoardDTO dto = dao.selectView(Integer.parseInt(num));
-    dao.close();
 
-    %>
+<%
+//게시글의 번호를 저장
+String num = request.getParameter("num");
+
+//데이터베이스 연결에 사용하는 DAO를 생성
+BoardDAO dao = new BoardDAO();
+//DAO와 게시글 번호를 사용하여 게시글 데이터를 저장
+BoardDTO dto = dao.selectView(Integer.parseInt(num));
+//세션에 저장되어 있는 로그인한 사람의 ID를 저장
+String sessionId = session.getAttribute("UserId").toString();
+//게시글의 작성자와 로그인한 사람이 다르면 메시지를 출력하고 뒤로가기를 실행
+if(!sessionId.equals(dto.getId())){
+	JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
+	return;
+}
+dao.close();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -28,21 +37,6 @@
     <script src="js/html5shiv.js"></script>
 	<script src="js/placeholders.min.js"></script>
 <![endif]-->
-<script>
-function deletePost(){
-	if(confirm("정말 삭제하시겠습니까?")){
-		// 삭제에 사용할 새로운 폼태그 생성
-		var formObj = document.createElement("form");
-		// num데이터를 전달하기 위한 input 히든 태그를 추가
-		formObj.innerHTML = "<input type='hidden' name='num' value='<%=dto.getNum()%>' />";
-		formObj.method="post";
-		formObj.action="boardDelete_Process.jsp";
-		// body에 생성한 폼 태그를 추가하여 실행 가능한 상태로 변경
-		document.body.appendChild(formObj);
-		formObj.submit();
-	}
-}
-</script>
 </head>
 
 <body>
@@ -51,9 +45,9 @@ function deletePost(){
 </ul>
 <!-- wrap -->
 <div id="wrap">
-	
-	<%@ include file="Header.jsp" %>
-	
+
+	<%@ include file="Header.jsp"%>
+
 	<div id="container">
 		<!-- location_area -->
 		<div class="location_area customer">
@@ -69,27 +63,22 @@ function deletePost(){
 		<!-- //location_area -->
 
 		<!-- bodytext_area -->
-		<div class="bodytext_area box_inner">			
+		<div class="bodytext_area box_inner">	
+			<form action="boardEdit_process.jsp" method="POST">
+			<input type="hidden" name="num"	value="<%= dto.getNum() %>"/>
 			<ul class="bbsview_list">
-				<li class="bbs_title"><%=dto.getTitle() %></li>
-				<li class="bbs_hit">작성일 : <span><%=dto.getPostDate() %></span></li>
-				<li class="bbs_date">조회수 : <span><%=dto.getVisitCount() %></span></li>
-				<li class="bbs_content">
-					<div class="editer_content">
-					   <%=dto.getContent().replace("\r\n","<br/>") %>
-					  
-                    </div>
-				</li>
+					<li class="bbs_title">제목 : <input type="text" name="title" value="<%= dto.getTitle() %>" size="100" placeholder="제목을 입력해주세요."></li>
+					<li class="bbs_content">
+						<div class="editer_content">
+							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요."><%= dto.getContent() %></textarea>
+						</div>
+					</li>
 			</ul>
 			<p class="btn_line txt_right">
-				<%if(session.getAttribute("UserId")!=null
-				&& session.getAttribute("UserId").equals(dto.getId())){ %>
-				<a onclick="deletePost()" class="btn_bbs">삭제하기</a>
-					<a href="board_edit.jsp?num=<%=dto.getNum()%>" class="btn_bbs">수정하기</a>
-					
-				<%}%>
-				<a href="Board_list.jsp?num=<%=dto.getNum() %>" class="btn_bbs">목록</a>
+				<input type="submit" value="글 수정하기" class="btn_srch">
+				<a href="board_list.html" class="btn_bbs">목록</a>
 			</p>
+			</form>
 			<ul class="near_list mt20">
 				<li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>		
 				<li><h4 class="next">이전글</h4><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
@@ -99,8 +88,7 @@ function deletePost(){
 
 	</div>
 	<!-- //container -->
-
-	<footer>
+<footer>
 		<div class="foot_area box_inner">
 			<ul class="foot_list clear">
 				<li><a href="javascript:;">이용약관</a></li>
@@ -136,3 +124,4 @@ function deletePost(){
 
 </body>
 </html>
+    
