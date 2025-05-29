@@ -1,6 +1,7 @@
 package fileupload;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -9,34 +10,32 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/13FileUpload/UploadProcess.do")
-
+@WebServlet("/13FileUpload/MultipleProcess.do")
 @MultipartConfig(
-	// 파일의 최대 크기 설정
 	maxFileSize = 1024*1024*1,
-	// 요청의 최대 크기 설정
 	maxRequestSize = 1024*1024*10
 )
-
-public class UploadProcess extends HttpServlet{
+public class MultipleProcess extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			// 실제 저장할 폴더를 설정
 			String saveDirectory = getServletContext().getRealPath("/Uploads");
-			// 실제 파일 이름 : 파일이름.확장자
-			String originalFileName = FileUtil.uploadFile(req, saveDirectory);
-			// 파일의 날짜를 포함한 파일이름
-			String saveFileName = FileUtil.renameFile(saveDirectory, originalFileName);
-			// 데이터베이스에 파일 데이터를 저장
-			insertMyFile(req, originalFileName, saveFileName);
+			//여러개의 파일이름을 list에 저장, 실제 파일도 저장
+			ArrayList<String> listFileName = FileUtil.multipleFile(req, saveDirectory);
+			for(String originalFileName : listFileName) {
+				// 파일이름을 날짜형식으로 변경
+				String savedFileName = FileUtil.renameFile(saveDirectory, originalFileName);
+				// 데이터베이스 파일 데이터를 저장
+				insertMyFile(req, originalFileName, savedFileName);
+			}
+			// filelist.jsp화면 실행
 			resp.sendRedirect("FileList.jsp");
 		}catch(Exception e) {
 			e.printStackTrace();
 			req.setAttribute("errorMessage", "파일 업로드 오류");
-			req.getRequestDispatcher("FileUploadMain.jsp").forward(req, resp);
-			
+			req.getRequestDispatcher("MultiFileUploadMain.jsp").forward(req, resp);
 		}
 	}
 	private void insertMyFile(HttpServletRequest req,String oFileName, String sFileName) {
@@ -63,9 +62,9 @@ public class UploadProcess extends HttpServlet{
 		dao.insertFile(dto);
 		dao.close();
 	}
-	
-
 }
+
+
 
 
 
