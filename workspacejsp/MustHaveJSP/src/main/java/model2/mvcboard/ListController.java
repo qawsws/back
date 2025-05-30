@@ -28,7 +28,7 @@ public class ListController extends HttpServlet{
 		// 검색어 설정
 		String searchWord = req.getParameter("searchWord");
 		if(searchWord != null) {
-			map.put("searcField", searchField);
+			map.put("searchField", searchField);
 			map.put("searchWord", searchWord);
 		}
 

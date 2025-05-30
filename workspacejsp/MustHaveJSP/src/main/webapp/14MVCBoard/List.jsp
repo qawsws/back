@@ -65,10 +65,24 @@
 					<td>${row.visitcount}</td>
 					<td>${row.postdate}</td>
 					<td>
+					
+					<%-- c:url : 한글같은 인코딩 문제가 있는 데이터를 보낼때 사용하는 JSTL --%>
+					<!-- value : 주소값 -->
+					<!-- var : url완성 후 사용할 변수 이름 --> 
+					<c:url value="../mvcboard/download.do" var="fileUrl">
+					<%-- c:param : url과 함께 전달할 파라미터 설정 --%>
+					<!-- name : 파라미터 키 -->
+					<!-- value : 파라미터의 값 -->
+						<c:param name="ofile" value="${row.ofile}" />
+						<c:param name="sfile" value="${row.sfile}" />
+						<c:param name="idx" value="${row.idx}" />
+					</c:url>
 					<!-- JSTL if문 : else가 존재하지 않는 if문 -->
 					<%-- c:if test="${조건식}" --%>
 					<c:if test="${not empty row.ofile}">
 						<a href="../mvcboard/download.do?ofile=${row.ofile}&sfile=${row.sfile}&idx=${row.idx}">[Down]</a>
+						<%-- c:url에서 설정한 var를 href에 설정 --%>
+						<a href="${fileUrl}">[Down]</a>
 					</c:if>
 					</td>
 				</tr>

@@ -34,7 +34,7 @@
 <body>
 	<h2>파일 첨부형 게시판 - 글쓰기(Write)</h2>
 	<form name="writeFrm" method="post" enctype="multipart/form-data"
-	action="/mvcboard/write.do" onsubmit="return validateForm(this);">
+	action="../mvcboard/write.do" onsubmit="return validateForm(this);">
 		<table border="1" width="90%">
 			<tr>
 				<td>작성자</td>
@@ -52,6 +52,12 @@
 				<td>내용</td>
 				<td>
 					<textarea name="content" style="width:90%; height:100px"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>첨부파일</td>
+				<td>
+					<input type="file" name="ofile" />
 				</td>
 			</tr>
 			<tr>
