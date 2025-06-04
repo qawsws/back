@@ -59,8 +59,9 @@ public class BoardDAO extends DBConnPool{
 	public int insertWrite(BoardDTO dto) {
 		int result = 0;
 		try {
-			String query ="INSERT INTO tourist_board (num,title,content,id,visitcount)"
-					+ "VALUES (seq_tourist_board_num.NEXTVAL, ?, ?, ?, 0)";
+			String query ="INSERT INTO tourist_board (num, title, content, id, visitcount) "
+					+ "VALUES (TOURIST_BOARD_NUM.NEXTVAL, ?, ?, ?, 0)";
+
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());

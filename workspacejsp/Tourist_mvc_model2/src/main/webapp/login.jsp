@@ -42,7 +42,7 @@ $(document).ready(function(){
 	<div id="container" id="layout0">
 		
 		<!-- bodytext_area -->
-		<form action="LoginProcess.jsp" method="POST">
+		<form action="./login.do" method="POST">
 			<div class="bodytext_area box_inner">
 				<!-- login-wrap -->
 				<div class="login_wrap">

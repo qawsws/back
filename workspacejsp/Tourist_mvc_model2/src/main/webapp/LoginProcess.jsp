@@ -3,21 +3,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	//request 안에 들어있는 데이터를 DTO에 설정
+	MemberDTO dto = new MemberDTO(
+			request.getParameter("id"),
+			request.getParameter("email"),
+			request.getParameter("name"),
+			request.getParameter("password"),
+			request.getParameter("phone"),
+			request.getParameter("gender"),
+			request.getParameter("agree")==null?false:true ,
+			request.getParameter("content")
+	);
 	MemberDAO dao = new MemberDAO();
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	MemberDTO dto = dao.getMember(id, pw);
-	if(dto.getId()!=null){
-		session.setAttribute("userDTO",dto);
-		session.setAttribute("UserId", id);
-		response.sendRedirect("index.jsp");
-	}else{
-		request.setAttribute("loginErrMsg", "아이디나 비밀번호를 확인해주세요.");
-		/* request.getRequestDispatcher("login.jsp").forward(request, response); */
-		%>
-		<jsp:forward page="login.jsp" />
-	<%}
+	dao.insertMember(dto);
+	response.sendRedirect("index.jsp");
 %>
+
+
+
+
 
 
 

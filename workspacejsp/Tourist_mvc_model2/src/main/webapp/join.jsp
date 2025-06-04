@@ -42,7 +42,7 @@
 		<!-- bodytext_area -->
 		<div class="bodytext_area box_inner">
 			<!-- appForm -->
-			<form action="JoinProcess.jsp" method="post" class="appForm">
+			<form action="./join.do" method="post" class="appForm">
 				<fieldset>
 					<legend>상담문의 입력 양식</legend>
 					<p class="info_pilsoo pilsoo_item">필수입력</p>

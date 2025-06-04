@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <header id="header">
 		<div class="header_area box_inner clear">	
-			<h1><a href="index.jsp">Tourist in tour</a></h1>
+			<h1><a href="./">Tourist in tour</a></h1>
 			<p class="openMOgnb"><a href="#"><b class="hdd">메뉴열기</b> <span></span><span></span><span></span></a></p>
 			<!-- header_cont -->
 			<div class="header_cont">
@@ -17,12 +17,12 @@
 					<%} %>
 					<li>
 						<%if(session.getAttribute("userDTO")==null){ %>
-							<a href="login.jsp">로그인</a>
+							<a href="./login.do">로그인</a>
 						<%}else{ %>
-							<a href="Logout.jsp">로그아웃</a>
+							<a href="./logout.do">로그아웃</a>
 						<%} %>
 					</li>
-					<li><a href="join.jsp">회원가입</a></li>
+					<li><a href="./join.do">회원가입</a></li>
 				</ul>		
 				<nav>
 				<ul class="gnb clear">
@@ -38,7 +38,7 @@
 					<li><a href="javascript:;" class="openAll2">고객센터</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                                <li><a href="board_list.jsp">공지사항</a></li>
+                                <li><a href="./boardlist.do">공지사항</a></li>
                                 <li><a href="javascript:;">문의하기</a></li>
                             </ul>
                         </div>

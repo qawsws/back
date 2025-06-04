@@ -6,15 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	BoardDAO dao = new BoardDAO();
-	Map<String, Object> param = new HashMap<>();
-	String searchWord = request.getParameter("searchWord");
-	if(searchWord != null && searchWord.length() > 0){
-		param.put("searchWord", searchWord);
-	}
-	int totalCount = dao.selectCount(param);
-	List<BoardDTO> boardLists = dao.selectList(param);
-	dao.close();
+	List<BoardDTO> boardLists = (List<BoardDTO>)request.getAttribute("boardLists");
+	int totalCount = (int)request.getAttribute("totalCount");
 %>
 <!DOCTYPE html>
 <html lang="ko">
