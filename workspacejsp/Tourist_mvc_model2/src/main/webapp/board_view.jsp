@@ -3,14 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-String num = request.getParameter("num");
-
-BoardDAO dao = new BoardDAO();
-// 조회수 1을 증가시키는 메서드
-dao.updateVisitCount(Integer.parseInt(num));
-// 데이터 한건을 dto에 저장
-BoardDTO dto = dao.selectView(Integer.parseInt(num));
-dao.close();
+BoardDTO dto = (BoardDTO)request.getAttribute("dto");
 
 %>
 <!DOCTYPE html>
@@ -86,7 +79,7 @@ function deletePost(){
 					<a onclick="deletePost()" class="btn_bbs">삭제하기</a>
 					<a href="board_edit.jsp?num=<%=dto.getNum() %>" class="btn_bbs">수정하기</a>
 				<%}%>
-				<a href="board_list.jsp" class="btn_bbs">목록</a>
+				<a href="./boardlist.do" class="btn_bbs">목록</a>
 			</p>
 			<ul class="near_list mt20">
 				<li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>		

@@ -4,10 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp" %>
 <%
-int num = Integer.parseInt(request.getParameter("num"));
-BoardDAO dao = new BoardDAO();
-BoardDTO dto = dao.selectView(num);
-dao.close();
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -51,13 +48,13 @@ dao.close();
 
 		<!-- bodytext_area -->
 		<div class="bodytext_area box_inner">	
-			<form action="boardEdit_process.jsp" method="POST">
-			<input type="hidden" name="num" value="<%=dto.getNum()%>"/>	
+			<form action="./boardedit.do" method="POST">
+			<input type="hidden" name="num" value="${dto.num}"/>	
 			<ul class="bbsview_list">
-					<li class="bbs_title">제목 : <input type="text" name="title" value="<%=dto.getTitle() %>" size="100" placeholder="제목을 입력해주세요."></li>
+					<li class="bbs_title">제목 : <input type="text" name="title" value="${dto.title}" size="100" placeholder="제목을 입력해주세요."></li>
 					<li class="bbs_content">
 						<div class="editer_content">
-							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요."><%=dto.getContent()%></textarea>
+							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요.">${dto.content}</textarea>
 						</div>
 					</li>
 			</ul>

@@ -73,9 +73,9 @@
 					<c:otherwise>
 						<c:forEach var="dto" items="${boardLists}" varStatus="loop">
 							<tr>
-								<td>${totalCount-loop.index}</td>
+								<td>${totalCount - loop.index}</td>
 								<td class="tit_notice">
-									<a href="board_view.jsp?num=${dto.num}">
+									<a href="./boardview.do?num=${dto.num}">
 										${dto.title}
 									</a>
 								</td>

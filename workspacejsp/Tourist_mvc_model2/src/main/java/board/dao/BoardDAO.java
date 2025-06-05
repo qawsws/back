@@ -16,7 +16,6 @@ public class BoardDAO extends DBConnPool{
 			query += " WHERE title "
 					+" LIKE '%" + map.get("searchWord") + "%'";
 		}
-		System.out.println(query);
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
@@ -59,8 +58,8 @@ public class BoardDAO extends DBConnPool{
 	public int insertWrite(BoardDTO dto) {
 		int result = 0;
 		try {
-			String query ="INSERT INTO tourist_board (num, title, content, id, visitcount) "
-					+ "VALUES (TOURIST_BOARD_NUM.NEXTVAL, ?, ?, ?, 0)";
+			String query = "INSERT INTO tourist_board (num, title, content, id, visitcount) "
+		             + "VALUES (TOURIST_BOARD_NUM.NEXTVAL, ?, ?, ?, 0)";
 
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());

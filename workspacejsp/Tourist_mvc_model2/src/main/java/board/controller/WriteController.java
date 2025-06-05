@@ -27,28 +27,33 @@ public class WriteController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// dto 생성
-		BoardDTO dto = new BoardDTO();
-		// title, content, id  데이터를 설정
-		dto.setTitle(req.getParameter("title"));
-		dto.setContent(req.getParameter("content"));
-		HttpSession session = req.getSession();
-		dto.setId(session.getAttribute("UserId").toString());
+	    BoardDTO dto = new BoardDTO();
+	    dto.setTitle(req.getParameter("title"));
+	    dto.setContent(req.getParameter("content"));
 
-		BoardDAO dao = new BoardDAO();
-		int iResult = dao.insertWrite(dto);
-		dao.close();
+	    HttpSession session = req.getSession();
+	    Object idObj = session.getAttribute("UserId");
 
-		// iResult가1이면 정상적으로 데이터가 저장됨
-		// 다른 숫자가 나오면 비정상으로 데이터가 저장되지않음을 의미
-		if(iResult == 1){
-			resp.sendRedirect("/Tourist_mvc_model2/boardlist.do");
-		}else{
-			JSFunction.alertBack(resp,"글쓰기에 실패하였습니다.");
-		}
+	    if (idObj == null) {
+	        JSFunction.alertLocation(resp, "로그인 후 이용해주십시오", "./login.do");
+	        return;
+	    }
+
+	    dto.setId(idObj.toString());
+
+	    BoardDAO dao = new BoardDAO();
+	    int iResult = dao.insertWrite(dto);
+	    dao.close();
+
+	    	// iResult가1이면 정상적으로 데이터가 저장됨
+	 		// 다른 숫자가 나오면 비정상으로 데이터가 저장되지않음을 의미
+	    if(iResult == 1){
+	        resp.sendRedirect("/Tourist_mvc_model2/boardlist.do");
+	    }else{
+	        JSFunction.alertBack(resp,"글쓰기에 실패하였습니다.");
+	    }
 	}
 }
-
 
 
 
