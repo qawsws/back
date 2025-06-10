@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("UserId", id);
 			session.setAttribute("userDTO", dto);
 			// 로그인 성공 시 index 페이지로 이동
-			resp.sendRedirect("/Tourist_mvc_model2/");
+			resp.sendRedirect(req.getContextPath() + "/");
 		}else {
 			// id나 pw가 틀렸을 경우 에러메시지 설정
 			req.setAttribute("loginErrMsg", "아이디나 비밀번호를 확인해주세요.");

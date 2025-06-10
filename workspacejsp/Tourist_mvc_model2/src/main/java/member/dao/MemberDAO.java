@@ -7,7 +7,7 @@ public class MemberDAO extends DBConnPool{
 	public MemberDTO getMember(String userId, String userPw) {
 		MemberDTO dto = new MemberDTO();
 		try {
-			String query = "SELECT * FROM tourist_member WHERE id=? and password=?";
+			String query = "SELECT * FROM TOURIST_MEMBER WHERE id=? and password=?";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, userId);
 			psmt.setString(2, userPw);
@@ -30,7 +30,7 @@ public class MemberDAO extends DBConnPool{
 	
 	public void insertMember(MemberDTO dto) {
 		try {
-			String query = "INSERT INTO tourist_member(id,email,name,password,phone,gender,agree,content) "
+			String query = "INSERT INTO TOURIST_MEMBER(id,email,name,password,phone,gender,agree,content) "
 					+ "VALUES (?,?,?,?,?,?,?,?)";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getId());

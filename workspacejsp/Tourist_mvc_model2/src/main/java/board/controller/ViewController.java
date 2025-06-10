@@ -29,7 +29,7 @@ public class ViewController extends HttpServlet{
 		// request에 dto데이터 저장
 		req.setAttribute("dto", dto);
 		// board_view.jsp 실행
-		req.getRequestDispatcher("/board_view_jstl.jsp").forward(req, resp);
+		req.getRequestDispatcher("/board_view.jsp").forward(req, resp);
 		dao.close();
 	}
 

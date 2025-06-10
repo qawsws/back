@@ -45,7 +45,7 @@ public class JoinController extends HttpServlet{
 		// Insert가 완료되면 로그인 페이지로 이동
 		// get 요청을 실하는것과 같은 처리 실행
 		// 주소창에 적어서 실행하는 주소를 그대로 작성
-		resp.sendRedirect("/Tourist_mvc_model2/login.do");
+		resp.sendRedirect(req.getContextPath() + "/");
 	}
 }
 

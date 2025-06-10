@@ -27,35 +27,7 @@ public class BoardDAO extends JDBConnect{
 		}
 		return totalCount;
 	}
-	public List<BoardDTO> selectList(Map<String, Object> map){
-		
-		List<BoardDTO> bbs = new ArrayList<>();
-		String query = "SELECT * FROM board";
-		if(map.get("searchWord") != null) {
-			query += " WHERE " + map.get("searchField") + " "
-					+" LIKE '%" + map.get("searchWord") + "%'";
-		}
-		query += " ORDER BY num DESC";
-		System.out.println(query);
-		try {
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
-			while(rs.next()) {
-				BoardDTO dto = new BoardDTO();
-				dto.setNum(rs.getInt("num"));
-				dto.setTitle(rs.getString("title"));
-				dto.setContent(rs.getString("content"));
-				dto.setPostDate(rs.getDate("postdate"));
-				dto.setId(rs.getString("id"));
-				dto.setVisitCount(rs.getInt("visitcount"));
-				bbs.add(dto);
-			}
-		}catch(Exception e) {
-			System.out.println("게시물 조회 중 예외 발생");
-			e.printStackTrace();
-		}
-		return bbs;
-	}
+	
 	public List<BoardDTO> selectListPage(Map<String, Object> map){
 		List<BoardDTO> bbs = new ArrayList<>();
 		

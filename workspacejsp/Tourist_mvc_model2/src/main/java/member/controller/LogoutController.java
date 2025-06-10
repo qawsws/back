@@ -22,7 +22,7 @@ public class LogoutController extends HttpServlet{
 		// session에 저장된 데이터를 전체 삭제
 		session.invalidate();
 		// 로그아웃 처리 후 실행할 페이지
-		resp.sendRedirect("/Tourist_mvc_model2/");
+		resp.sendRedirect(req.getContextPath() + "/");
 	}
 }
 

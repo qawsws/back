@@ -41,10 +41,11 @@ public class EditController extends HttpServlet{
 		int result = dao.updateBoard(dto);
 		dao.close();
 		if(result == 1){
-			resp.sendRedirect("./boardview.do?num="+dto.getNum());
+		    resp.sendRedirect(req.getContextPath() + "/boardlist.do");
 		}else{
-			JSFunction.alertBack(resp, "수정에 실패했습니다.");
+		    JSFunction.alertBack(resp, "수정에 실패했습니다.");
 		}
+
 		
 	}
 }

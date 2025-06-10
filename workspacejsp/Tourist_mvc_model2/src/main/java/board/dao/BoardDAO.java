@@ -1,8 +1,9 @@
 package board.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
+
 
 import board.dto.BoardDTO;
 import common.DBConnPool;
@@ -11,7 +12,7 @@ public class BoardDAO extends DBConnPool{
 	public int selectCount(Map<String, Object> map) {
 		int totalCount = 0;
 		
-		String query = "SELECT COUNT(*) FROM tourist_board";
+		String query = "SELECT COUNT(*) FROM TOURIST_NOTICE";
 		if(map.get("searchWord") != null) {
 			query += " WHERE title "
 					+" LIKE '%" + map.get("searchWord") + "%'";
@@ -27,38 +28,45 @@ public class BoardDAO extends DBConnPool{
 		}
 		return totalCount;
 	}
-	public List<BoardDTO> selectList(Map<String, Object> map){
-		List<BoardDTO> bbs = new Vector<>();
-		String query = "SELECT * FROM tourist_board";
-		if(map.get("searchWord") != null) {
-			query += " WHERE title "
-					+" LIKE '%" + map.get("searchWord") + "%'";
-		}
-		query += " ORDER BY num DESC";
-		System.out.println(query);
-		try {
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
-			while(rs.next()) {
-				BoardDTO dto = new BoardDTO();
-				dto.setNum(rs.getInt("num"));
-				dto.setTitle(rs.getString("title"));
-				dto.setContent(rs.getString("content"));
-				dto.setPostDate(rs.getDate("postdate"));
-				dto.setId(rs.getString("id"));
-				dto.setVisitCount(rs.getInt("visitcount"));
-				bbs.add(dto);
-			}
-		}catch(Exception e) {
-			System.out.println("게시물 조회 중 예외 발생");
-			e.printStackTrace();
-		}
-		return bbs;
-	}
+	 public List<BoardDTO> selectListPage(Map<String, Object> map) {
+	        List<BoardDTO> list = new ArrayList<>();
+	        int start = (int) map.get("start");
+	        int end = (int) map.get("end");
+	        String searchWord = (String) map.get("searchWord");
+
+	        String query = "SELECT * FROM (" +
+	                       " SELECT ROWNUM rn, a.* FROM (" +
+	                       "  SELECT * FROM TOURIST_NOTICE ";
+	        if (searchWord != null && !searchWord.isEmpty()) {
+	            query += " WHERE title LIKE '%" + searchWord + "%' ";
+	        }
+	        query += " ORDER BY num DESC" +
+	                 " ) a " +
+	                 ") WHERE rn BETWEEN " + start + " AND " + end;
+
+	        try {
+	            stmt = con.createStatement();
+	            rs = stmt.executeQuery(query);
+	            while (rs.next()) {
+	                BoardDTO dto = new BoardDTO();
+	                dto.setNum(rs.getInt("num"));
+	                dto.setTitle(rs.getString("title"));
+	                dto.setContent(rs.getString("content"));
+	                dto.setPostDate(rs.getDate("postdate"));
+	                dto.setId(rs.getString("id"));
+	                dto.setVisitCount(rs.getInt("visitcount"));
+	                list.add(dto);
+	            }
+	        } catch (Exception e) {
+	            System.out.println("게시물 조회 중 예외 발생");
+	            e.printStackTrace();
+	        }
+	        return list;
+	    }
 	public int insertWrite(BoardDTO dto) {
 		int result = 0;
 		try {
-			String query = "INSERT INTO tourist_board (num, title, content, id, visitcount) "
+			String query = "INSERT INTO TOURIST_NOTICE (num, title, content, id, visitcount) "
 		             + "VALUES (TOURIST_BOARD_NUM.NEXTVAL, ?, ?, ?, 0)";
 
 			psmt = con.prepareStatement(query);
@@ -77,7 +85,7 @@ public class BoardDAO extends DBConnPool{
 		BoardDTO dto = new BoardDTO();
 		// DB에서 사용할 쿼리를 작성한다
 		String query = "SELECT *"
-				+ " FROM tourist_board "
+				+ " FROM TOURIST_NOTICE "
 				+ " WHERE num = ?";
 		System.out.println(query);
 		try {
@@ -99,7 +107,7 @@ public class BoardDAO extends DBConnPool{
 		return dto;
 	}
 	public void updateVisitCount(int num) {
-		String query = " UPDATE tourist_board SET "
+		String query = " UPDATE TOURIST_NOTICE SET "
 				+ " visitcount = visitcount+1 "
 				+ " WHERE num=?";
 		try {
@@ -114,7 +122,7 @@ public class BoardDAO extends DBConnPool{
 	public int updateBoard(BoardDTO dto) {
 		int result = 0;
 		try {
-			String query = "UPDATE tourist_board SET title=?, content=? "
+			String query = "UPDATE TOURIST_NOTICE SET title=?, content=? "
 					+ "WHERE num=?";
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
@@ -131,7 +139,7 @@ public class BoardDAO extends DBConnPool{
 	public int deleteBoard(int num) {
 		int result = 0;
 		try {
-			String query = "DELETE FROM tourist_board WHERE num=?";
+			String query = "DELETE FROM TOURIST_NOTICE WHERE num=?";
 			psmt = con.prepareStatement(query);
 			psmt.setInt(1, num);
 			result = psmt.executeUpdate();

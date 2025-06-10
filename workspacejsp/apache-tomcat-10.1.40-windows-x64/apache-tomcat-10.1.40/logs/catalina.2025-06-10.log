@@ -1,0 +1,220 @@
+10-Jun-2025 09:12:34.163 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/10.1.40
+10-Jun-2025 09:12:34.166 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Apr 1 2025 17:20:53 UTC
+10-Jun-2025 09:12:34.175 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  10.1.40.0
+10-Jun-2025 09:12:34.175 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+10-Jun-2025 09:12:34.175 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+10-Jun-2025 09:12:34.175 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+10-Jun-2025 09:12:34.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Program Files\Java\jdk-17
+10-Jun-2025 09:12:34.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+8-LTS-191
+10-Jun-2025 09:12:34.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Oracle Corporation
+10-Jun-2025 09:12:34.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 09:12:34.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 09:12:34.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\conf\logging.properties
+10-Jun-2025 09:12:34.177 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Jun-2025 09:12:34.177 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djdk.tls.ephemeralDHKeySize=2048
+10-Jun-2025 09:12:34.177 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=utf-8
+10-Jun-2025 09:12:34.177 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Jun-2025 09:12:34.177 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dsun.io.useCanonCaches=false
+10-Jun-2025 09:12:34.177 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+10-Jun-2025 09:12:34.178 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+10-Jun-2025 09:12:34.178 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+10-Jun-2025 09:12:34.178 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+10-Jun-2025 09:12:34.178 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+10-Jun-2025 09:12:34.178 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+10-Jun-2025 09:12:34.178 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 09:12:34.179 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 09:12:34.179 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\temp
+10-Jun-2025 09:12:34.181 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [2.0.8]을(를) 로드했습니다.
+10-Jun-2025 09:12:34.187 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+10-Jun-2025 09:12:34.356 INFO [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+10-Jun-2025 09:12:34.373 INFO [main] org.apache.catalina.startup.Catalina.load [360] 밀리초 내에 서버가 초기화되었습니다.
+10-Jun-2025 09:12:34.388 INFO [main] java.util.ArrayList.forEach Name = dbcp_myoracle Ignoring unknown property: value of "5" for "midIdle" property
+10-Jun-2025 09:12:34.423 INFO [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+10-Jun-2025 09:12:34.423 INFO [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/10.1.40]
+10-Jun-2025 09:12:34.429 SEVERE [main] org.apache.catalina.realm.UserDatabaseRealm.getUserDatabase 키 [UserDatabase]을(를) 사용하여 사용자 데이터베이스를 찾는 중 예외 발생
+	javax.naming.NameNotFoundException: Name [UserDatabase]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [UserDatabase]을(를) 찾을 수 없습니다.
+		at org.apache.naming.NamingContext.lookup(NamingContext.java:520)
+		at org.apache.naming.NamingContext.lookup(NamingContext.java:155)
+		at org.apache.catalina.realm.UserDatabaseRealm.getUserDatabase(UserDatabaseRealm.java:225)
+		at org.apache.catalina.realm.UserDatabaseRealm.startInternal(UserDatabaseRealm.java:248)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.realm.CombinedRealm.startInternal(CombinedRealm.java:195)
+		at org.apache.catalina.realm.LockOutRealm.startInternal(LockOutRealm.java:101)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:742)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:761)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+10-Jun-2025 09:12:34.431 SEVERE [main] org.apache.catalina.realm.CombinedRealm.startInternal [org.apache.catalina.realm.UserDatabaseRealm] realm을 시작하지 못했습니다.
+	org.apache.catalina.LifecycleException: 키 [UserDatabase]을(를) 사용하여 UserDatabase 구성요소를 찾을 수 없습니다.
+		at org.apache.catalina.realm.UserDatabaseRealm.startInternal(UserDatabaseRealm.java:250)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.realm.CombinedRealm.startInternal(CombinedRealm.java:195)
+		at org.apache.catalina.realm.LockOutRealm.startInternal(LockOutRealm.java:101)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:742)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:761)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+10-Jun-2025 09:12:34.444 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR 웹 애플리케이션 아카이브 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\ROOT.war]을(를) 배치합니다.
+10-Jun-2025 09:12:35.773 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+10-Jun-2025 09:12:35.897 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR 웹 애플리케이션 아카이브 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\ROOT.war]의 배치가 [1,450] 밀리초에 완료되었습니다.
+10-Jun-2025 09:12:35.897 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\docs]을(를) 배치합니다.
+10-Jun-2025 09:12:35.932 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\docs]에 대한 배치가 [35] 밀리초에 완료되었습니다.
+10-Jun-2025 09:12:35.932 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\examples]을(를) 배치합니다.
+10-Jun-2025 09:12:36.273 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\examples]에 대한 배치가 [341] 밀리초에 완료되었습니다.
+10-Jun-2025 09:12:36.273 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\host-manager]을(를) 배치합니다.
+10-Jun-2025 09:12:36.318 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\host-manager]에 대한 배치가 [45] 밀리초에 완료되었습니다.
+10-Jun-2025 09:12:36.318 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\manager]을(를) 배치합니다.
+10-Jun-2025 09:12:36.360 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\manager]에 대한 배치가 [42] 밀리초에 완료되었습니다.
+10-Jun-2025 09:12:36.365 INFO [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+10-Jun-2025 09:12:36.425 INFO [main] org.apache.catalina.startup.Catalina.start 서버가 [2052] 밀리초 내에 시작되었습니다.
+10-Jun-2025 09:58:44.490 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer [localhost:8005] (base 포트 [8005] 그리고 offset [0])와(과) 연결할 수 없었습니다. Tomcat이 실행 중이지 않을 수 있습니다.
+10-Jun-2025 09:58:44.494 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Catalina를 중지시키는 중 오류 발생
+	java.net.ConnectException: Connection refused: connect
+		at java.base/sun.nio.ch.Net.connect0(Native Method)
+		at java.base/sun.nio.ch.Net.connect(Net.java:579)
+		at java.base/sun.nio.ch.Net.connect(Net.java:568)
+		at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+		at java.base/java.net.Socket.connect(Socket.java:633)
+		at java.base/java.net.Socket.connect(Socket.java:583)
+		at java.base/java.net.Socket.<init>(Socket.java:507)
+		at java.base/java.net.Socket.<init>(Socket.java:287)
+		at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:657)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:393)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:482)
+10-Jun-2025 10:09:27.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/10.1.40
+10-Jun-2025 10:09:27.401 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Apr 1 2025 17:20:53 UTC
+10-Jun-2025 10:09:27.403 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  10.1.40.0
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Program Files\Java\jdk-17
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+8-LTS-191
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Oracle Corporation
+10-Jun-2025 10:09:27.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 10:09:27.405 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 10:09:27.410 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\conf\logging.properties
+10-Jun-2025 10:09:27.410 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Jun-2025 10:09:27.411 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djdk.tls.ephemeralDHKeySize=2048
+10-Jun-2025 10:09:27.411 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=utf-8
+10-Jun-2025 10:09:27.411 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Jun-2025 10:09:27.411 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dsun.io.useCanonCaches=false
+10-Jun-2025 10:09:27.411 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+10-Jun-2025 10:09:27.412 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+10-Jun-2025 10:09:27.412 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+10-Jun-2025 10:09:27.412 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+10-Jun-2025 10:09:27.412 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+10-Jun-2025 10:09:27.412 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+10-Jun-2025 10:09:27.412 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 10:09:27.413 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40
+10-Jun-2025 10:09:27.413 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\temp
+10-Jun-2025 10:09:27.416 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [2.0.8]을(를) 로드했습니다.
+10-Jun-2025 10:09:27.443 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+10-Jun-2025 10:09:27.610 INFO [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+10-Jun-2025 10:09:27.625 INFO [main] org.apache.catalina.startup.Catalina.load [378] 밀리초 내에 서버가 초기화되었습니다.
+10-Jun-2025 10:09:27.642 INFO [main] java.util.ArrayList.forEach Name = dbcp_myoracle Ignoring unknown property: value of "5" for "midIdle" property
+10-Jun-2025 10:09:27.675 INFO [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+10-Jun-2025 10:09:27.675 INFO [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/10.1.40]
+10-Jun-2025 10:09:27.682 SEVERE [main] org.apache.catalina.realm.UserDatabaseRealm.getUserDatabase 키 [UserDatabase]을(를) 사용하여 사용자 데이터베이스를 찾는 중 예외 발생
+	javax.naming.NameNotFoundException: Name [UserDatabase]은(는) 이 컨텍스트에 바인딩되지 않았습니다. [UserDatabase]을(를) 찾을 수 없습니다.
+		at org.apache.naming.NamingContext.lookup(NamingContext.java:520)
+		at org.apache.naming.NamingContext.lookup(NamingContext.java:155)
+		at org.apache.catalina.realm.UserDatabaseRealm.getUserDatabase(UserDatabaseRealm.java:225)
+		at org.apache.catalina.realm.UserDatabaseRealm.startInternal(UserDatabaseRealm.java:248)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.realm.CombinedRealm.startInternal(CombinedRealm.java:195)
+		at org.apache.catalina.realm.LockOutRealm.startInternal(LockOutRealm.java:101)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:742)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:761)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+10-Jun-2025 10:09:27.684 SEVERE [main] org.apache.catalina.realm.CombinedRealm.startInternal [org.apache.catalina.realm.UserDatabaseRealm] realm을 시작하지 못했습니다.
+	org.apache.catalina.LifecycleException: 키 [UserDatabase]을(를) 사용하여 UserDatabase 구성요소를 찾을 수 없습니다.
+		at org.apache.catalina.realm.UserDatabaseRealm.startInternal(UserDatabaseRealm.java:250)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.realm.CombinedRealm.startInternal(CombinedRealm.java:195)
+		at org.apache.catalina.realm.LockOutRealm.startInternal(LockOutRealm.java:101)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:742)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:761)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+10-Jun-2025 10:09:27.699 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR 웹 애플리케이션 아카이브 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\ROOT.war]을(를) 배치합니다.
+10-Jun-2025 10:09:29.015 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+10-Jun-2025 10:09:29.123 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR 웹 애플리케이션 아카이브 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\ROOT.war]의 배치가 [1,423] 밀리초에 완료되었습니다.
+10-Jun-2025 10:09:29.124 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\docs]을(를) 배치합니다.
+10-Jun-2025 10:09:29.158 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\docs]에 대한 배치가 [34] 밀리초에 완료되었습니다.
+10-Jun-2025 10:09:29.159 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\examples]을(를) 배치합니다.
+10-Jun-2025 10:09:29.468 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\examples]에 대한 배치가 [309] 밀리초에 완료되었습니다.
+10-Jun-2025 10:09:29.468 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\host-manager]을(를) 배치합니다.
+10-Jun-2025 10:09:29.509 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\host-manager]에 대한 배치가 [41] 밀리초에 완료되었습니다.
+10-Jun-2025 10:09:29.509 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\manager]을(를) 배치합니다.
+10-Jun-2025 10:09:29.542 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\it\Documents\back\workspacejsp\apache-tomcat-10.1.40-windows-x64\apache-tomcat-10.1.40\webapps\manager]에 대한 배치가 [33] 밀리초에 완료되었습니다.
+10-Jun-2025 10:09:29.547 INFO [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+10-Jun-2025 10:09:29.599 INFO [main] org.apache.catalina.startup.Catalina.start 서버가 [1973] 밀리초 내에 시작되었습니다.
+10-Jun-2025 10:15:06.163 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer [localhost:8005] (base 포트 [8005] 그리고 offset [0])와(과) 연결할 수 없었습니다. Tomcat이 실행 중이지 않을 수 있습니다.
+10-Jun-2025 10:15:06.167 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Catalina를 중지시키는 중 오류 발생
+	java.net.ConnectException: Connection refused: connect
+		at java.base/sun.nio.ch.Net.connect0(Native Method)
+		at java.base/sun.nio.ch.Net.connect(Net.java:579)
+		at java.base/sun.nio.ch.Net.connect(Net.java:568)
+		at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+		at java.base/java.net.Socket.connect(Socket.java:633)
+		at java.base/java.net.Socket.connect(Socket.java:583)
+		at java.base/java.net.Socket.<init>(Socket.java:507)
+		at java.base/java.net.Socket.<init>(Socket.java:287)
+		at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:657)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:393)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:482)

@@ -48,7 +48,7 @@ public class WriteController extends HttpServlet{
 	    	// iResult가1이면 정상적으로 데이터가 저장됨
 	 		// 다른 숫자가 나오면 비정상으로 데이터가 저장되지않음을 의미
 	    if(iResult == 1){
-	        resp.sendRedirect("/Tourist_mvc_model2/boardlist.do");
+	        resp.sendRedirect(req.getContextPath() + "/boardlist.do");
 	    }else{
 	        JSFunction.alertBack(resp,"글쓰기에 실패하였습니다.");
 	    }

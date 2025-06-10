@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
 <% 
 BoardDTO dto = (BoardDTO)request.getAttribute("dto");
-
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,7 +28,8 @@ function deletePost(){
 		// num데이터를 전달하기 위한 input 히든 태그를 추가
 		formObj.innerHTML = "<input type='hidden' name='num' value='<%=dto.getNum()%>' />";
 		formObj.method="post";
-		formObj.action="boardDelete_process.jsp";
+		formObj.action = "boarddelete.do";  // 컨트롤러 매핑 주소와 맞춤
+
 		// body에 생성한 폼 태그를 추가하여 실행 가능한 상태로 변경
 		document.body.appendChild(formObj);
 		formObj.submit();
@@ -77,7 +77,7 @@ function deletePost(){
 				<%if(session.getAttribute("UserId")!=null
 				&& session.getAttribute("UserId").equals(dto.getId())){ %>
 					<a onclick="deletePost()" class="btn_bbs">삭제하기</a>
-					<a href="board_edit.jsp?num=<%=dto.getNum() %>" class="btn_bbs">수정하기</a>
+					<a href="./boardedit.do?num=${dto.num }" class="btn_bbs">수정하기</a>
 				<%}%>
 				<a href="./boardlist.do" class="btn_bbs">목록</a>
 			</p>

@@ -1,5 +1,7 @@
 package board.dto;
 
+
+
 import java.sql.Date;
 
 public class BoardDTO {
