@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration status="INFO">
     <Appenders>
-        <Console name="console" target="SYSSTEM_OUT">
+        <Console name="console" target="SYSTEM_OUT">
             <PatternLayout charset="UTF-8"
                            pattern="%d{hh:mm:ss} %5p [%c] %m%n"/>
         </Console>
@@ -10,7 +10,7 @@
         <logger name="org.springframework" level="INFO" additivity="false">
             <appender-ref ref="console"/>
         </logger>
-        <logger name="org.zerock" level="INFO" additivity="false">
+        <logger name="org.zerock.springex.mapper" level="TRACE" additivity="false">
             <appender-ref ref="console"/>
         </logger>
         <root level="INFO" additivity="false">

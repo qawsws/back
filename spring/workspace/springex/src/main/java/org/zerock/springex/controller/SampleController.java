@@ -69,7 +69,7 @@ public class SampleController {
     }
 
     @PostMapping("/ex4_1")
-    // 파라미터로 받아온 todoDTO의 경우 model에 설정하지 않아도 자동으로 화면까지 전달함
+    // 파라미터로 받아온 todoDTO의 경우 model에설정하지 않아도 자동으로 화면까지 전달함
     public void ex4_1(TodoDTO todoDTO, Model model) {
         log.info(todoDTO);
         model.addAttribute("message", "메시지 설정");
@@ -91,5 +91,10 @@ public class SampleController {
     public void ex6(String name, String result){
         log.info(name);
         log.info(result);
+    }
+    @GetMapping("/ex7")
+    public void ex7(String p1, int p2) {
+        log.info(p1);
+        log.info(p2);
     }
 }

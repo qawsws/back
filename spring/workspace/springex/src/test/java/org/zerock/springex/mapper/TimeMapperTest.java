@@ -24,15 +24,22 @@ public class TimeMapperTest {
     @Test
     public void testGetTime(){
         // log4j2를 이용한 로그를 출력
-        // log4j2.xml에 설정한 패턴대로 콘솔창에 출력됨
+        // log4j2.xml에 설정한 패턴 대로 콘솔창에 출력됨
         log.info(timeMapper.getTime());
-        System.out.print(timeMapper.getTime());
+        System.out.println(timeMapper.getTime());
     }
-
 
     @Test
     public void testGetTime2(){
-        log.info(timeMapper2.getTime()+ "timeMapper2를 실행했스빈다.");
+        log.info(timeMapper2.getTime()+ " timeMapper2를 실행했습니다.");
     }
 }
+
+
+
+
+
+
+
+
 
