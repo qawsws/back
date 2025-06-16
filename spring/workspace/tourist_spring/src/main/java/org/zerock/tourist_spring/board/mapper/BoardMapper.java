@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface BoardMapper {
     List<BoardVO> selectAll();
-    BoardVO selectOne(Long num);
-    void updateVisitCount(Long num);
+    BoardVO selectOne(int num);
+    void updateVisitCount(int num);
+    void deleteBoard(int num);
+    void updateBoard(BoardVO boardVO);
 }

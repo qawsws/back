@@ -10,7 +10,7 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <!--Spring 에서 사용하는 controller 설정-->
+    <!--Spring 에서 사용하는 Controller 설정-->
     <servlet>
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -24,12 +24,12 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <!-- 서블렛을 실행할 주소를 설정   -->
+    <!-- 서블렛을 실행할 주소를 설정-->
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!-- 한글이 꺠지지 않도록 하는 filter 설정   -->
+    <!--    한글이 깨지지 않도록 하는 filter 설정-->
     <filter>
         <filter-name>encoding</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

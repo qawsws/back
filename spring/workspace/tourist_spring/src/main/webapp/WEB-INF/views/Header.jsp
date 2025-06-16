@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <header id="header">
 		<div class="header_area box_inner clear">	
-			<h1><a href="./">Tourist in tour</a></h1>
+			<h1><a href="../..">Tourist in tour</a></h1>
 			<p class="openMOgnb"><a href="#"><b class="hdd">메뉴열기</b> <span></span><span></span><span></span></a></p>
 			<!-- header_cont -->
 			<div class="header_cont">
@@ -18,14 +18,14 @@
 					
 					<%if(session.getAttribute("userDTO")==null){ %>
 					<li>
-						<a href="./login.do">로그인</a>
+						<a href="/member/login">로그인</a>
 					</li>
 					<li>
 						<a href="/member/join">회원가입</a>
 					</li>
 					<%}else{ %>
 					<li>
-						<a href="./logout.do">로그아웃</a>
+						<a href="/member/logout">로그아웃</a>
 					</li>
 					<%} %>
 				</ul>		

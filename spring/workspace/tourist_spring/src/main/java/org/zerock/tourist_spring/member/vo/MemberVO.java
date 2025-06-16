@@ -3,9 +3,9 @@ package org.zerock.tourist_spring.member.vo;
 import lombok.*;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class MemberVO {
     private String id;

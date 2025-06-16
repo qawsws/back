@@ -11,4 +11,7 @@ public interface TodoMapper {
     // VO는 테이블당 하나, DTO 필요한 만큼 작성해도 무방
     void insertTodo(TodoVO todoVO);
     List<TodoVO> selectAll();
+    TodoVO selectOne(Long tno);
+    void deleteTodo(Long tno);
+    void updateTodo(TodoVO todoVO);
 }

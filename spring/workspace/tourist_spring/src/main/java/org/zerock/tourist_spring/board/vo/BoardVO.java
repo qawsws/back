@@ -2,8 +2,9 @@ package org.zerock.tourist_spring.board.vo;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -13,13 +14,10 @@ public class BoardVO {
     private String title;
     private String content;
     private String id;
-    private String postdate;
+    private LocalDate postdate;
     private int visitcount;
-    public void changeBoard(String title, String content, String id, String postdate, int visitcount) {
+    public void changeBoard(String title, String content) {
         this.title = title;
         this.content = content;
-        this.id = id;
-        this.postdate = postdate;
-
     }
 }

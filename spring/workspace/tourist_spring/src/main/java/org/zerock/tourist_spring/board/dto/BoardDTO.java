@@ -1,19 +1,22 @@
 package org.zerock.tourist_spring.board.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+import java.time.LocalDate;
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
-
 public class BoardDTO {
     private int num;
     private String title;
     private String content;
     private String id;
-    private String postdate;
+    private LocalDate postdate;
     private int visitcount;
 }
+

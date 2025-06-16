@@ -4,43 +4,28 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<title> 박물관 미션 투어 당첨자 발표 | 공지사항 | 고객센터 | 투어리스트인투어 </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="/css/common.css">
-	<script src="/js/jquery-1.11.3.min.js"></script>
-	<script src="/js/common.js"></script>
-	<script src="/js/jquery.smooth-scroll.min.js"></script>
-	<!--[if lte IE 9]>
-	<script src="/js/html5shiv.js"></script>
+<title> 박물관 미션 투어 당첨자 발표 | 공지사항 | 고객센터 | 투어리스트인투어 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/css/common.css">
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/jquery.smooth-scroll.min.js"></script>
+<!--[if lte IE 9]>
+    <script src="/js/html5shiv.js"></script>
 	<script src="/js/placeholders.min.js"></script>
-	<![endif]-->
-	<script>
-		function deletePost(){
-			if(confirm("정말 삭제하시겠습니까?")){
-				// 삭제에 사용할 새로운 폼태그 생성
-				var formObj = document.createElement("form");
-				// num데이터를 전달하기 위한 input 히든 태그를 추가
-				formObj.innerHTML = "<input type='hidden' name='num' value='${dto.num}' />";
-				formObj.method="post";
-				formObj.action="./boardremove.do";
-				// body에 생성한 폼 태그를 추가하여 실행 가능한 상태로 변경
-				document.body.appendChild(formObj);
-				formObj.submit();
-			}
-		}
-	</script>
+<![endif]-->
 </head>
 
 <body>
 <ul class="skipnavi">
-	<li><a href="#container">본문내용</a></li>
+    <li><a href="#container">본문내용</a></li>
 </ul>
 <!-- wrap -->
 <div id="wrap">
 
-	<%@ include file="../../Header.jsp" %>
+	<%@ include file="Header.jsp"%>
 
 	<div id="container">
 		<!-- location_area -->
@@ -53,31 +38,28 @@
 					<li><a href="#">문의하기</a></li>
 				</ul>
 			</div>
-		</div>
+		</div>	
 		<!-- //location_area -->
 
 		<!-- bodytext_area -->
 		<div class="bodytext_area box_inner">
+			<form action="/board/edit" method="post">
+			<input type="hidden" name="num" value="${dto.num }"/>	
 			<ul class="bbsview_list">
-				<li class="bbs_title">${dto.title}</li>
-				<li class="bbs_hit">작성일 : <span>${dto.postdate }</span></li>
-				<li class="bbs_date">조회수 : <span>${dto.visitcount}</span></li>
-				<li class="bbs_content">
-					<div class="editer_content">
-						${dto.content}
-					</div>
-				</li>
+					<li class="bbs_title">제목 : <input type="text" name="title" value="${dto.title }" size="100" placeholder="제목을 입력해주세요."></li>
+					<li class="bbs_content">
+						<div class="editer_content">
+							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요.">${dto.content }</textarea>
+						</div>
+					</li>
 			</ul>
 			<p class="btn_line txt_right">
-				<c:if test="${sessionScope.UserId != null
-					and sessionScope.UserId == dto.id}">
-					<a onclick="deletePost()" class="btn_bbs">삭제하기</a>
-					<a href="./boardedit.do?num=${dto.num }" class="btn_bbs">수정하기</a>
-				</c:if>
+				<input type="submit" value="글 수정하기" class="btn_srch">
 				<a href="/board/list" class="btn_bbs">목록</a>
 			</p>
+			</form>
 			<ul class="near_list mt20">
-				<li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>
+				<li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>		
 				<li><h4 class="next">이전글</h4><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
 			</ul>
 		</div>
@@ -85,15 +67,14 @@
 
 	</div>
 	<!-- //container -->
-
-	<footer>
+<footer>
 		<div class="foot_area box_inner">
 			<ul class="foot_list clear">
 				<li><a href="javascript:;">이용약관</a></li>
 				<li><a href="javascript:;">개인정보취급방침</a></li>
 			</ul>
 			<h2>투어리스트인투어</h2>
-			<p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>
+            <p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>        
 				<span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>        
 					<span class="br_line">E-mail : <span class="space0"> titour@touristintour.com</span></span>
 				</span>
@@ -122,3 +103,4 @@
 
 </body>
 </html>
+    
