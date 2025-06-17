@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                 <c:choose>
-                    <c:when test="${empty boardLists}">
+                    <c:when test="${empty responseDTO.dtoList}">
                         <tr>
                             <td colspan="5" align="center">
                                 등록된 게시물이 없습니다^^*
@@ -71,11 +71,11 @@
                         </tr>
                     </c:when>
                     <c:otherwise>
-                        <c:forEach var="dto" items="${boardLists}" varStatus="loop">
+                        <c:forEach var="dto" items="${responseDTO.dtoList}" varStatus="loop">
                             <tr>
                                 <td>${dto.num}</td>
                                 <td class="tit_notice">
-                                    <a href="/board/read?num=${dto.num}">
+                                    <a href="/board/read?num=${dto.num}&${pageRequestDTO.link}">
                                             ${dto.title}
                                     </a>
                                 </td>
@@ -89,15 +89,17 @@
             </table>
             <!-- pagination -->
             <div class="pagination">
-                <a href="javascript:;" class="firstpage  pbtn"><img src="img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
-                <a href="javascript:;" class="prevpage  pbtn"><img src="img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
-                <a href="javascript:;"><span class="pagenum currentpage">1</span></a>
-                <a href="javascript:;"><span class="pagenum">2</span></a>
-                <a href="javascript:;"><span class="pagenum">3</span></a>
-                <a href="javascript:;"><span class="pagenum">4</span></a>
-                <a href="javascript:;"><span class="pagenum">5</span></a>
-                <a href="javascript:;" class="nextpage  pbtn"><img src="img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
-                <a href="javascript:;" class="lastpage  pbtn"><img src="img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
+                <a href="/board/list?page=1&size=10" class="firstpage  pbtn"><img src="/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
+                <c:if test="${responseDTO.prev}">
+                    <a href="/board/list?page=${responseDTO.start-1}" class="prevpage  pbtn"><img src="/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
+                </c:if>
+                <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
+                    <a href="/board/list?page=${num}&size=10"><span class="pagenum ${responseDTO.page==num ?"currentpage":""}">${num}</span></a>
+                </c:forEach>
+                <c:if test="${responseDTO.next}">
+                    <a href="/board/list?page=${responseDTO.end+1}" class="nextpage  pbtn"><img src="/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+                </c:if>
+                <a href="/board/list?page=${responseDTO.last}&size=10" class="lastpage  pbtn"><img src="/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
             </div>
             <!-- //pagination -->
 
@@ -140,6 +142,11 @@
     </ul>
     <p class="to_top"><a href="#layout0" class="s_point">TOP</a></p>
 </div>
-
+<script>
+    let msg = '${msg}';
+    if(msg!=null && msg.length>0){
+        alert(msg);
+    }
+</script>
 </body>
 </html>

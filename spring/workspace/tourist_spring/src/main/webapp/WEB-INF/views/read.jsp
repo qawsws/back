@@ -22,7 +22,9 @@
                 // 삭제에 사용할 새로운 폼태그 생성
                 var formObj = document.createElement("form");
                 // num데이터를 전달하기 위한 input 히든 태그를 추가
-                formObj.innerHTML = "<input type='hidden' name='num' value='${dto.num}' />";
+                formObj.innerHTML = "<input type='hidden' name='num' value='${dto.num}' />"
+                + "<input type='hidden' name='page' value='${pageRequestDTO.page}' />"
+                + "<input type='hidden' name='size' value='${pageRequestDTO.size}' />";
                 formObj.method="post";
                 formObj.action="/board/remove";
                 // body에 생성한 폼 태그를 추가하여 실행 가능한 상태로 변경
@@ -72,9 +74,9 @@
                 <c:if test="${sessionScope.UserId != null
 					and sessionScope.UserId == dto.id}">
                     <a onclick="deletePost()" class="btn_bbs">삭제하기</a>
-                    <a href="/board/edit?num=${dto.num }" class="btn_bbs">수정하기</a>
+                    <a href="/board/edit?num=${dto.num}&${pageRequestDTO.link}" class="btn_bbs">수정하기</a>
                 </c:if>
-                <a href="/board/list" class="btn_bbs">목록</a>
+                <a href="/board/list?${pageRequestDTO.link}" class="btn_bbs">목록</a>
             </p>
             <ul class="near_list mt20">
                 <li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>
@@ -119,6 +121,11 @@
     </ul>
     <p class="to_top"><a href="#layout0" class="s_point">TOP</a></p>
 </div>
-
+<script>
+    let msg = '${msg}';
+    if(msg!=null && msg.length>0){
+        alert(msg);
+    }
+</script>
 </body>
 </html>

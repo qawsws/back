@@ -2,6 +2,8 @@ package org.zerock.springex2.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.zerock.springex2.dto.PageRequestDTO;
+import org.zerock.springex2.dto.PageResponseDTO;
 import org.zerock.springex2.vo.TodoVO;
 import org.zerock.springex2.dto.TodoDTO;
 import org.zerock.springex2.mapper.TodoMapper;
@@ -62,6 +64,28 @@ public class TodoServiceImpl implements TodoService{
     }
 
     @Override
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList = voList.stream()
+                .map(vo -> TodoDTO.builder()
+                        .tno(vo.getTno())
+                        .title(vo.getTitle())
+                        .dueDate(vo.getDueDate())
+                        .finished(vo.isFinished())
+                        .writer(vo.getWriter())
+                        .build())
+                .collect(Collectors.toList());
+        int total = todoMapper.getCount();
+        PageResponseDTO<TodoDTO> pageResponseDTO =
+                PageResponseDTO.<TodoDTO>withAll()
+                        .pageRequestDTO(pageRequestDTO)
+                        .dtoList(dtoList)
+                        .total(total)
+                        .build();
+        return pageResponseDTO;
+    }
+
+    @Override
     public TodoDTO getOne(Long tno) {
         // DB에서 tno와 일치하는 데이터를 저장
         TodoVO todoVO = todoMapper.selectOne(tno);
@@ -83,18 +107,18 @@ public class TodoServiceImpl implements TodoService{
     }
 
     @Override
-    public String editTodo(TodoDTO todoDTO) {
+    public String editTodo(TodoDTO todoDTO){
         // 데이터가 존재하는지 확인
-        TodoVO vo= todoMapper.selectOne(todoDTO.getTno());
-        if(vo!=null) {
-            // 데이터가 있으면 병경가능한 데이터를 변경
+        TodoVO vo = todoMapper.selectOne(todoDTO.getTno());
+        if(vo != null){
+            // 데이터가 있으면 변경 가능한 데이터를 변경
             vo.changeTodo(todoDTO.getTitle(),
                     todoDTO.getDueDate(),
                     todoDTO.isFinished());
             // update문 실행
             todoMapper.updateTodo(vo);
             return "수정했습니다.";
-        }else {
+        }else{
             return "수정 처리중 예외가 발생했습니다.";
         }
     }

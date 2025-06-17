@@ -1,6 +1,7 @@
 package org.zerock.tourist_spring.board.mapper;
 
 import org.zerock.tourist_spring.board.vo.BoardVO;
+import org.zerock.tourist_spring.common.dto.PageRequestDTO;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface BoardMapper {
     void updateVisitCount(int num);
     void deleteBoard(int num);
     void updateBoard(BoardVO boardVO);
+    List<BoardVO> selectList(PageRequestDTO pageRequestDTO);
+    int getCount();
 }

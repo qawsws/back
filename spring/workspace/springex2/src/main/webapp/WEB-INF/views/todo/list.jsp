@@ -55,13 +55,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${dtoList}" var="dto">
+                        <c:forEach items="${responseDTO.dtoList}" var="dto">
                             <tr>
                                     <%-- c:out : &,<,>," 같은 특수기호를 이스케이프 처리하는 JSTL 기능 --%>
                                     <%-- 이스케이프 처리 : 특수기호가 출력될 수 있도록 앞에 역슬래시(\)를 넣어주는 처리--%>
                                 <th scope="row"><c:out value="${dto.tno}"/></th>
                                 <td>
-                                    <a href="/todo/read?tno=${dto.tno}" class="text-decoration-none">
+                                    <a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}" class="text-decoration-none">
                                         <c:out value="${dto.title}"/>
                                     </a>
                                 </td>
@@ -72,6 +72,31 @@
                         </c:forEach>
                         </tbody>
                     </table>
+                    <div class="float-end">
+                        <ul class="pagination flex-wrap">
+                            <c:if test="${responseDTO.prev}">
+                                <li class="page-item">
+                                    <a class="page-link" href="/todo/list?page=${responseDTO.start-1}">Previous</a>
+                                </li>
+                            </c:if>
+                            <%-- 페이지의 숫자 부분--%>
+                            <%-- begin : 첫번째 페이지--%>
+                            <%-- end : 마지막 페이지--%>
+                            <%-- num : 반복에 사용할 변수--%>
+                            <c:forEach begin="${responseDTO.start}"
+                                       end="${responseDTO.end}"
+                                       var="num">
+                                <li class="page-item ${responseDTO.page == num ? "active":""}">
+                                    <a class="page-link" href="/todo/list?page=${num}">${num}</a>
+                                </li>
+                            </c:forEach>
+                            <c:if test="${responseDTO.next}">
+                                <li class="page-item">
+                                    <a class="page-link" href="/todo/list?page=${responseDTO.end+1}">Next</a>
+                                </li>
+                            </c:if>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

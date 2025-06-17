@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,28 +42,20 @@
 
 		<!-- bodytext_area -->
 		<div class="bodytext_area box_inner">	
-			<form action="/board/edit" method="post">
-			<input type="hidden" name="num" value="${dto.num }"/>
-			<input type="hidden" name="id" value="${dto.id }"/>
-			<input type='hidden' name='page' value='${pageRequestDTO.page}' />
-			<input type='hidden' name='size' value='${pageRequestDTO.size}' />
+			<form action="/board/write" method="POST">
 			<ul class="bbsview_list">
-					<li class="bbs_title">제목 : <input type="text" name="title" value="${dto.title }" size="100" placeholder="제목을 입력해주세요."></li>
+					<li class="bbs_title">제목 : <input type="text" name="title" size="100" placeholder="제목을 입력해주세요."></li>
 					<li class="bbs_content">
 						<div class="editer_content">
-							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요.">${dto.content }</textarea>
+							<textarea name="content" cols="110" rows="20" placeholder="내용을 입력해주세요."></textarea>
 						</div>
 					</li>
 			</ul>
 			<p class="btn_line txt_right">
-				<input type="submit" value="글 수정하기" class="btn_srch">
-				<a href="/board/list?${pageRequestDTO.link}" class="btn_bbs">목록</a>
+				<input type="submit" value="글쓰기" class="btn_srch">
+				<a href="/board/list" class="btn_bbs">목록</a>
 			</p>
 			</form>
-			<ul class="near_list mt20">
-				<li><h4 class="prev">다음글</h4><a href="javascript:;">추석 연휴 티켓/투어 배송 및 직접 수령 안내</a></li>		
-				<li><h4 class="next">이전글</h4><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
-			</ul>
 		</div>
 		<!-- //bodytext_area -->
 

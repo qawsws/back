@@ -98,10 +98,12 @@
         alert(msg);
     }
     document.querySelector(".btn-primary").addEventListener("click", function(e){
-        self.location="/todo/edit?tno="+${dto.tno};
+        // `(백틱) : 문자열 안에 자바스크립트 변수나 표현식을 $ {} 작성하여 문자열로 사용할 수 있음
+
+        self.location=`/todo/edit?tno=${dto.tno}&${pageRequestDTO.link}`;
     })
     document.querySelector(".btn-secondary").addEventListener("click", function(e){
-        self.location="/todo/list";
+        self.location="/todo/list?${pageRequestDTO.link}";
     })
 </script>
 </body>

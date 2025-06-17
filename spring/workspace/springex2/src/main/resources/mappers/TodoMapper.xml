@@ -16,8 +16,15 @@
     <select id="selectAll" resultType="org.zerock.springex2.vo.TodoVO">
         SELECT * FROM tbl_todo ORDER BY tno DESC
     </select>
+    <select id="selectList" resultType="org.zerock.springex2.vo.TodoVO">
+        SELECT * FROM tbl_todo ORDER BY tno DESC LIMIT #{skip}, #{size}
+    </select>
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM tbl_todo
+    </select>
+
     <select id="selectOne" resultType="org.zerock.springex2.vo.TodoVO">
-        SELECT * FROM tbl_todo WHERE tno = #{tno}
+        SELECT * FROM tbl_todo WHERE tno=#{tno}
     </select>
     <delete id="deleteTodo">
         DELETE FROM tbl_todo WHERE tno = #{tno}

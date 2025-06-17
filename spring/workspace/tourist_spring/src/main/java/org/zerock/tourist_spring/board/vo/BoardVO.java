@@ -1,6 +1,7 @@
 package org.zerock.tourist_spring.board.vo;
 
 import lombok.*;
+import org.zerock.tourist_spring.board.dto.BoardDTO;
 
 import java.time.LocalDate;
 
@@ -16,8 +17,9 @@ public class BoardVO {
     private String id;
     private LocalDate postdate;
     private int visitcount;
-    public void changeBoard(String title, String content) {
-        this.title = title;
-        this.content = content;
+    public void changeBoard(BoardDTO boardDTO){
+        this.title = boardDTO.getTitle();
+        this.content = boardDTO.getContent();
     }
+
 }
