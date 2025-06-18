@@ -12,6 +12,7 @@
     </select>
     <select id="getCount" resultType="int">
         SELECT COUNT(*) FROM tourist_board
+        <include refid="search"></include>
     </select>
     <select id="selectOne" resultType="org.zerock.tourist_spring.board.vo.BoardVO">
         SELECT * FROM tourist_board WHERE num = #{num}
@@ -29,4 +30,23 @@
         SET title=#{title}, content=#{content}
         WHERE num = #{num}
     </update>
+<!-- useGeneratedKeys : insert된 데이터의 primary key를 반환할 수 있음 -->
+<!-- keyProperty : 반환할 primary key의 열 이름-->
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="num">
+        INSERT INTO tourist_board(title, content, id)
+        VALUES (#{title},#{content},#{id})
+    </insert>
+    <select id="selectSearch" resultType="org.zerock.tourist_spring.board.vo.BoardVO">
+        SELECT * FROM tourist_board
+        <include refid="search"></include>
+        ORDER BY num DESC
+        LIMIT #{skip}, #{size}
+    </select>
+    <sql id="search">
+        <where>
+            <if test="keyword != null">
+                title LIKE concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </sql>
 </mapper>

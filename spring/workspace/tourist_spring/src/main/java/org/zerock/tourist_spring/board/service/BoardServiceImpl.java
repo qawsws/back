@@ -36,8 +36,8 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public PageResponseDTO<BoardDTO> findList(PageRequestDTO pageRequestDTO) {
-        int totalCount = boardMapper.getCount();
-        List<BoardDTO> dtoList = boardMapper.selectList(pageRequestDTO).stream()
+        int totalCount = boardMapper.getCount(pageRequestDTO);
+        List<BoardDTO> dtoList = boardMapper.selectSearch(pageRequestDTO).stream()
                 .map(vo-> BoardDTO.builder()
                         .num(vo.getNum())
                         .title(vo.getTitle())
@@ -99,6 +99,17 @@ public class BoardServiceImpl implements BoardService {
         BoardVO vo = boardMapper.selectOne(boardDTO.getNum());
         vo.changeBoard(boardDTO);
         boardMapper.updateBoard(vo);
+    }
+    @Override
+    public int addBoard(BoardDTO boardDTO){
+        BoardVO vo = BoardVO.builder()
+                .title(boardDTO.getTitle())
+                .content(boardDTO.getContent())
+                .id(boardDTO.getId())
+                .build();
+        // vo안에 자동생성된 primary key인 num이 저장되어있음
+        boardMapper.insertBoard(vo);
+        return vo.getNum();
     }
 
 }

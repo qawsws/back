@@ -65,7 +65,7 @@ public class TodoServiceImpl implements TodoService{
 
     @Override
     public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
-        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoVO> voList = todoMapper.selectSearch(pageRequestDTO);
         List<TodoDTO> dtoList = voList.stream()
                 .map(vo -> TodoDTO.builder()
                         .tno(vo.getTno())
@@ -75,7 +75,7 @@ public class TodoServiceImpl implements TodoService{
                         .writer(vo.getWriter())
                         .build())
                 .collect(Collectors.toList());
-        int total = todoMapper.getCount();
+        int total = todoMapper.getCount(pageRequestDTO);
         PageResponseDTO<TodoDTO> pageResponseDTO =
                 PageResponseDTO.<TodoDTO>withAll()
                         .pageRequestDTO(pageRequestDTO)

@@ -43,12 +43,14 @@
 
         <!-- bodytext_area -->
         <div class="bodytext_area box_inner">
-            <form method="get" class="minisrch_form">
+            <form action="/board/list" method="get" class="minisrch_form">
                 <fieldset>
                     <legend>검색</legend>
-                    <input type="text" name="searchWord" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
+                    <input type="text" name="keyword" value="${pageRequestDTO.keyword}" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
                     <button class="btn_srch">검색</button>
-                    <a class="btn_srch" href="./write">글쓰기</a>
+                    <c:if test="${sessionScope.UserId != null}">
+                        <a class="btn_srch" href="/board/write">글쓰기</a>
+                    </c:if>
                 </fieldset>
             </form>
             <table class="bbsListTbl" summary="번호,제목,조회수,작성일 등을 제공하는 표">
@@ -89,17 +91,17 @@
             </table>
             <!-- pagination -->
             <div class="pagination">
-                <a href="/board/list?page=1&size=10" class="firstpage  pbtn"><img src="/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
+                <a data-num="1" class="firstpage  pbtn"><img data-num="1" src="/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
                 <c:if test="${responseDTO.prev}">
-                    <a href="/board/list?page=${responseDTO.start-1}" class="prevpage  pbtn"><img src="/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
+                    <a data-num="${responseDTO.start-1}" class="prevpage  pbtn"><img data-num="${responseDTO.start-1} src="/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
                 </c:if>
                 <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
-                    <a href="/board/list?page=${num}&size=10"><span class="pagenum ${responseDTO.page==num ?"currentpage":""}">${num}</span></a>
+                    <a ><span data-num="${num}" class="pagenum ${responseDTO.page==num ?"currentpage":""}">${num}</span></a>
                 </c:forEach>
                 <c:if test="${responseDTO.next}">
-                    <a href="/board/list?page=${responseDTO.end+1}" class="nextpage  pbtn"><img src="/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+                    <a data-num="${responseDTO.end+1}" class="nextpage  pbtn"><img data-num="${responseDTO.end+1}" src="/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
                 </c:if>
-                <a href="/board/list?page=${responseDTO.last}&size=10" class="lastpage  pbtn"><img src="/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
+                <a data-num="${responseDTO.last}" class="lastpage  pbtn"><img data-num="${responseDTO.last}" src="/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
             </div>
             <!-- //pagination -->
 
@@ -147,6 +149,17 @@
     if(msg!=null && msg.length>0){
         alert(msg);
     }
+    document.querySelector(".pagination").addEventListener("click", function(e){
+        e.preventDefault();
+        const target = e.target;
+        if(target.tagName !== 'A' && target.tagName !== 'SPAN' && target.tagName !== 'IMG'){
+            return;
+        }
+        const num = target.getAttribute("data-num");
+        const formObj = document.querySelector("form");
+        formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'/>`;
+        formObj.submit();
+    });
 </script>
 </body>
 </html>

@@ -12,5 +12,7 @@ public interface BoardMapper {
     void deleteBoard(int num);
     void updateBoard(BoardVO boardVO);
     List<BoardVO> selectList(PageRequestDTO pageRequestDTO);
-    int getCount();
+    List<BoardVO> selectSearch(PageRequestDTO pageRequestDTO);
+    int getCount(PageRequestDTO pageRequestDTO);
+    void insertBoard(BoardVO boardVO);
 }

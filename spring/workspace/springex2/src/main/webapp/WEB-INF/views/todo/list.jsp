@@ -39,6 +39,36 @@
     <div class="row content">
         <div class="col">
             <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Search</h5>
+                    <form action="/todo/list" method="get">
+                        <input type="hidden" name="size" value="${pageRequestDTO.size}">
+                        <div class="mb-3">
+                            <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checked":""}> 완료여부
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType("t")?"checked":""}>제목
+                            <input type="checkbox" name="types" value="w" ${pageRequestDTO.checkType("w")?"checked":""}>작성자
+                            <input type="text" name="keyword" class="form-control" value="${pageRequestDTO.keyword}">
+                        </div>
+                        <div class="input-group mb-3 dueDateDiv">
+                            <input type="date" name="from" class="form-control" value="${pageRequestDTO.from}">
+                            <input type="date" name="to" class="form-control" value="${pageRequestDTO.to}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="float-end">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                                <button class="btn btn-info" type="button">Clear</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col">
+            <div class="card">
                 <div class="card-header">
                     Featured
                 </div>
@@ -76,7 +106,7 @@
                         <ul class="pagination flex-wrap">
                             <c:if test="${responseDTO.prev}">
                                 <li class="page-item">
-                                    <a class="page-link" href="/todo/list?page=${responseDTO.start-1}">Previous</a>
+                                    <a class="page-link" data-num="${responseDTO.start-1}">Previous</a>
                                 </li>
                             </c:if>
                             <%-- 페이지의 숫자 부분--%>
@@ -87,12 +117,12 @@
                                        end="${responseDTO.end}"
                                        var="num">
                                 <li class="page-item ${responseDTO.page == num ? "active":""}">
-                                    <a class="page-link" href="/todo/list?page=${num}">${num}</a>
+                                    <a class="page-link" data-num="${num}">${num}</a>
                                 </li>
                             </c:forEach>
                             <c:if test="${responseDTO.next}">
                                 <li class="page-item">
-                                    <a class="page-link" href="/todo/list?page=${responseDTO.end+1}">Next</a>
+                                    <a class="page-link" data-num="${responseDTO.end+1}">Next</a>
                                 </li>
                             </c:if>
                         </ul>
@@ -114,5 +144,39 @@
 </div>
 <!-- 부트스트랩 JavaScript를 CDN방식으로 다운로드 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+    document.querySelector(".pagination").addEventListener("click", function(e){
+        e.preventDefault();
+        e.stopPropagation()
+        // 클릭했던 태그를 target에 저장
+        const target = e.target;
+        // 클릭한 태그가 a태그인지 확인하는 if
+        if(target.tagName !== 'A'){
+            // a태그가 아니라면 아무런 처리를 하지 않고 함수를 끝냄
+            return;
+        }
+        // data-num 속성에 각 페이지 데이터를 저장하여 사용
+        const num = target.getAttribute("data-num");
+        // 검색창의 form태그를 변수에 저장
+        const formObj = document.querySelector("form");
+        // 클릭한 번호에 맞는 페이지를 hidden 태그에 저장
+        formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'/>`;
+        // submit을 실행
+        formObj.submit();
+    });
+    // 검색조건을 모두 삭제하고 페이지를 새로고침 하는 버튼
+    /*document.querySelector(".btn-info").addEventListener("click",function(){
+       self.location="/todo/list";
+    });*/
+    document.querySelector(".btn-info").addEventListener("click",function(e){
+        let formObj = document.querySelector("form");
+        formObj.finished.checked = false;
+        formObj.types[0].checked = false;
+        formObj.types[1].checked = false;
+        formObj.keyword.value="";
+        formObj.from.value="";
+        formObj.to.value="";
+    });
+</script>
 </body>
 </html>

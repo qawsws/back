@@ -13,4 +13,5 @@ public interface BoardService {
     void removeBoard(int num);
     void editBoard(BoardDTO boardDTO);
     BoardDTO findOneEdit(int num);
+    int addBoard(BoardDTO boardDTO);
 }
