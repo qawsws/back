@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace에 현재 연결할 인터페이스의 패키지명부터 인터페이스명까지 전체를 작성-->
+<mapper namespace="org.zerock.springtest.todo.mapper.TodoMapper">
+    <!-- id에 인터페이스의 추상메서드와 같은 이름을 적어야 연동이됨-->
+    <!-- resultType : 실행결과의 타입을 설정-->
+    <select id="getTime" resultType="string">
+        select now()
+    </select>
+    <insert id="insertTodo">
+        INSERT INTO tbl_todo(title, dueDate, writer)
+        VALUES (#{title}, #{dueDate}, #{writer});
+    </insert>
+    <select id="selectAll" resultType="org.zerock.springtest.todo.vo.TodoVO">
+        SELECT * FROM tbl_todo ORDER BY tno DESC
+    </select>
+    <select id="selectList" resultType="org.zerock.springtest.todo.vo.TodoVO">
+        SELECT * FROM tbl_todo ORDER BY tno DESC LIMIT #{skip}, #{size}
+    </select>
+    <select id="selectSearch" resultType="org.zerock.springtest.todo.vo.TodoVO">
+        SELECT * FROM tbl_todo
+        <include refid="search"></include>
+        ORDER BY tno DESC
+        LIMIT #{skip}, #{size}
+    </select>
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM tbl_todo
+        <include refid="search"></include>
+    </select>
+
+    <select id="selectOne" resultType="org.zerock.springtest.todo.vo.TodoVO">
+        SELECT * FROM tbl_todo WHERE tno=#{tno}
+    </select>
+    <delete id="deleteTodo">
+        DELETE FROM tbl_todo WHERE tno = #{tno}
+    </delete>
+    <update id="updateTodo">
+        UPDATE tbl_todo
+        SET title = #{title}
+          , dueDate = #{dueDate}
+          , finished = #{finished}
+        WHERE tno = #{tno}
+    </update>
+    <sql id="search">
+        <where>
+            <if test="types!=null and types.length > 0">
+                <foreach collection="types" item="type" open="(" close=")" separator="OR">
+                    <if test="type=='t'.toString()">
+                        title LIKE concat('%',#{keyword},'%')
+                    </if>
+                    <if test="type=='w'.toString()">
+                        writer LIKE concat('%',#{keyword},'%')
+                    </if>
+                </foreach>
+            </if>
+            <if test="finished">
+                <trim prefix="AND">
+                    finished = 1
+                </trim>
+            </if>
+            <if test="from!=null and to!=null">
+                <trim prefix="AND">
+                    dueDate BETWEEN #{from} AND #{to}
+                </trim>
+            </if>
+        </where>
+    </sql>
+</mapper>
