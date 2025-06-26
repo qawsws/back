@@ -32,4 +32,15 @@ public class BoardDTO {
         this.createdAt = board.getCreatedAt();
         this.updatedAt = board.getUpdatedAt();
     }
+    public Board toEntity(){
+        return Board.builder()
+                .num(this.num)
+                .title(this.title)
+                .content(this.content)
+                .id(this.id)
+                .visitCount(this.visitCount)
+                .createdAt(this.createdAt)
+                .updatedAt(this.updatedAt)
+                .build();
+    }
 }

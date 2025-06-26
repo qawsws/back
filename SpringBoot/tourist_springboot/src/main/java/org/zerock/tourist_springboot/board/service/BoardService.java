@@ -2,12 +2,16 @@ package org.zerock.tourist_springboot.board.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.zerock.tourist_springboot.board.domain.Board;
 import org.zerock.tourist_springboot.board.dto.BoardDTO;
 import org.zerock.tourist_springboot.board.repository.BoardRepository;
 import org.zerock.tourist_springboot.common.dto.PageRequestDTO;
 import org.zerock.tourist_springboot.common.dto.PageResponseDTO;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,17 +28,28 @@ public class BoardService {
     }
 
     public PageResponseDTO<BoardDTO> findList(PageRequestDTO pageRequestDTO) {
+        // 전체 데이터 개수
         int totalCount = boardRepository.findAll().size();
-        List<BoardDTO> dtoList = boardRepository.findAll().stream()
+        //Pageable을 이용한 페이징 조건 생성
+        Pageable pageable = PageRequest.of(
+                pageRequestDTO.getPage()-1 // 페이지 번호
+                ,pageRequestDTO.getSize() // 페이지 사이즈
+                ,Sort.by("num").descending());// 정렬방식
+        // 페이징 처리된 findAll의 결과물을 저장
+        List<Board> boardList = boardRepository.findAll(pageable).getContent();
+        // Board를 BoardDTO로 변경
+        List<BoardDTO> dtoList = boardList.stream()
                 .map(BoardDTO::new)
                 .collect(Collectors.toList());
+        // PageResponseDTO를 생성하여 반환
         return PageResponseDTO.<BoardDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(dtoList)
                 .total(totalCount)
                 .build();
     }
-    @Transactional //조회수
+
+    @Transactional // 조회수 1증가를 위한 트랜잭션
     public BoardDTO findOne(Long num){
         // num을 기준으로 데이터를 저장
         Board vo = boardRepository.findById(num).get();
@@ -42,31 +57,27 @@ public class BoardService {
         vo.updateVisitCount();
         // 화면에서 사용하는 객체인 DTO로 변경
         BoardDTO dto = new BoardDTO(vo);
+
         return dto;
     }
-
-    public BoardDTO findOneEdit(Long num) {
-        Board board = boardRepository.findById(num)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다: " + num));
+    public BoardDTO findOneEdit(Long num){
+        Board board = boardRepository.findById(num).get();
         return new BoardDTO(board);
     }
 
-//    public void removeBoard(int num){
-//        boardMapper.deleteBoard(num);
-//    }
-//    public void editBoard(BoardDTO boardDTO){
-//        BoardVO vo = boardMapper.selectOne(boardDTO.getNum());
-//        vo.changeBoard(boardDTO);
-//        boardMapper.updateBoard(vo);
-//    }
-//    public int addBoard(BoardDTO boardDTO){
-//        BoardVO vo = BoardVO.builder()
-//                .title(boardDTO.getTitle())
-//                .content(boardDTO.getContent())
-//                .id(boardDTO.getId())
-//                .build();
-//        // vo안에 자동생성된 primary key인 num이 저장되어있음
-//        boardMapper.insertBoard(vo);
-//        return vo.getNum();
-//    }
+    public void removeBoard(Long num){
+        boardRepository.deleteById(num);
+    }
+    @Transactional
+    public void editBoard(BoardDTO boardDTO){
+        Board vo = boardRepository.findById(boardDTO.getNum()).get();
+        vo.changeBoard(boardDTO);
+    }
+
+    public Long addBoard(BoardDTO boardDTO){
+        Board vo = boardDTO.toEntity();
+        boardRepository.save(vo);
+        // INSERT를 실행한 후 AutoIncrement로 생성된 PK를 vo에 저장해줌
+        return vo.getNum();
+    }
 }

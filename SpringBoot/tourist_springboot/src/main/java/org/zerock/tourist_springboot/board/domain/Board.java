@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.zerock.tourist_springboot.board.dto.BoardDTO;
 
 import java.time.LocalDateTime;
 
@@ -39,5 +40,9 @@ public class Board {
 
     public void updateVisitCount(){
         this.visitCount++;
+    }
+    public void changeBoard(BoardDTO dto){
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
     }
 }
