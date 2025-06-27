@@ -26,7 +26,7 @@ public class BoardController {
         if(bindingResult.hasErrors()){
             pageRequestDTO = PageRequestDTO.builder().build();
         }
-        model.addAttribute("responseDTO", boardService.findList(pageRequestDTO));
+        model.addAttribute("responseDTO", boardService.searchList(pageRequestDTO));
         return "board/list";
     }
     @GetMapping("/read")

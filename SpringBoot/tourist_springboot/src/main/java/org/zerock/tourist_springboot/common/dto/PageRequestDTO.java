@@ -32,8 +32,8 @@ public class PageRequestDTO {
     private int size = 10;
     // page, size데이터를 출력
     private String link;
-    // 제목, 작성자
-    private String[] types;
+    // 제목,내용,작성자
+    private String types="";
     // 검색어
     private String keyword;
     // 완료여부
@@ -43,20 +43,20 @@ public class PageRequestDTO {
     // 검색 종료날짜
     private LocalDate to;
 
+    public String[] getTypeArr(){
+        if(types==null && types.isEmpty()){
+            return null;
+        }
+        return types.split(",");
+    }
+
     public int getSkip(){
         // 1페이지 : 0
         // 2페이지 : 10
         // 3페이지 : 20
         return (page - 1) * 10;
     }
-    public boolean checkType(String type){
-        // types이 하나도 설정이 되어있지 않은 경우 false
-        if(types==null || types.length == 0){
-            return false;
-        }
-        // 타입이 설정되어 있다면 type안의 데이터가 types에 있는지 확인하여 true나 false를 반환
-        return Arrays.stream(types).anyMatch(type::equals);
-    }
+
     public String getLink(){
         StringBuilder builder = new StringBuilder();
         builder.append("page=" + this.page);
@@ -65,11 +65,9 @@ public class PageRequestDTO {
             // checkbox 타입은 on으로 저장
             builder.append("&finished=on");
         }
-        if(types != null && types.length>0){
+        if(types != null && getTypeArr().length>0){
             // 제목, 작성자 두개다 설정되어 있다면 반복문을 이용하여 두개 모두 파라미터로 설정
-            for(int i=0; i<types.length; i++){
-                builder.append("&types="+types[i]);
-            }
+            builder.append("&types="+types);
         }
         if(keyword != null){
             try{

@@ -32,7 +32,7 @@ public class BoardService {
         int totalCount = boardRepository.findAll().size();
         //Pageable을 이용한 페이징 조건 생성
         Pageable pageable = PageRequest.of(
-                pageRequestDTO.getPage()-1 // 페이지 번호
+                pageRequestDTO.getPage()-1 // 페이지 번호, 0페이지부터 시작
                 ,pageRequestDTO.getSize() // 페이지 사이즈
                 ,Sort.by("num").descending());// 정렬방식
         // 페이징 처리된 findAll의 결과물을 저장
@@ -47,6 +47,9 @@ public class BoardService {
                 .dtoList(dtoList)
                 .total(totalCount)
                 .build();
+    }
+    public PageResponseDTO<BoardDTO> searchList(PageRequestDTO pageRequestDTO) {
+        return boardRepository.searchDsl(pageRequestDTO);
     }
 
     @Transactional // 조회수 1증가를 위한 트랜잭션
