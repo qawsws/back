@@ -65,8 +65,11 @@ public class WebSecurityConfig {
             BCryptPasswordEncoder bCryptPasswordEncoder,
             UserDetailsService userDetailsService
     ) throws Exception{
+        //인증 관리자 설정
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+       // 사용자 정보를 가지고올 방식 설정 => h2데이터베이스에서 USER를 가지고 오도록 설정
         authProvider.setUserDetailsService(userDetailsService);
+        // 비밀번호를 암호화 인코더 설정
         authProvider.setPasswordEncoder(bCryptPasswordEncoder);
         return new ProviderManager(authProvider);
     }
