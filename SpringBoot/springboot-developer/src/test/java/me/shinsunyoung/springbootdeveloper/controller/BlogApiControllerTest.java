@@ -52,8 +52,9 @@ class BlogApiControllerTest {
         final String url = "/api/articles"; // 실행할 컨트롤러의 주소
         final String title = "title"; // 저장할 데이터
         final String content = "content"; // 저장할 데이터
+        final String writer = "writer";
         // Post실행시 전달할 객체
-        final AddArticleRequest userRequest = new AddArticleRequest(title,content);
+        final AddArticleRequest userRequest = new AddArticleRequest(title,content,writer);
         // userRequest 객체를 JSON형식의 문자열로 변경
         final String requestBody = objectMapper.writeValueAsString(userRequest);
         // when : 컨트롤러 실행 및 결과 저장
@@ -163,6 +164,5 @@ class BlogApiControllerTest {
         Article article = blogRepository.findById(savedArticle.getId()).get();
         assertThat(article.getTitle()).isEqualTo(newTitle);
         assertThat(article.getContent()).isEqualTo(newContent);
-
     }
 }

@@ -50,16 +50,17 @@ public class BlogApiController {
     @DeleteMapping("/api/articles/{id}")
     // 제너릭에 Void를 설정하여 아무 데이터도 전달하지 않도록 설정
     public ResponseEntity<Void> deleteArticle(
-            @PathVariable("id") long id, Principal principal){
-        blogService.delete(id, principal.getName());
+            @PathVariable("id") long id){
+        blogService.delete(id);
         // 정상처리의 경우 아무 데이터도 전달하지 않음
         return ResponseEntity.ok().build();
     }
     @PutMapping("/api/articles/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable("id") long id
+    public ResponseEntity<Article> updateArticle(
+            @PathVariable("id") long id
             , @RequestBody UpdateArticleRequest request
             , Principal principal){
-        //로그인한 계정의 아이디를 저장
+        // 로그인한 계정의 아이디를 저장
         String loginUserEmail = principal.getName();
         Article updateArticle = blogService.update(id, request, loginUserEmail);
         return ResponseEntity.ok().body(updateArticle);

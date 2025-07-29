@@ -17,31 +17,30 @@ import java.time.LocalDateTime;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
+    @Column(name="id", updatable = false)
     private Long id;
-    @Column(name = "title", nullable = false)
+    @Column(name="title", nullable = false)
     private String title;
-    @Column(name = "content", nullable = false)
+    @Column(name="content", nullable = false)
     private String content;
-    @Column(name="writer", nullable = false)
-    private String writer;
-
-    //데이터가 처음 저장될때의 날짜 및 시간을 자동 저장
+    @Column(name="author", nullable = false)
+    private String author;
+    // 데이터가 처음 저장될때의 날짜 및 시간을 자동 저장
     @CreatedDate
     @Column(name="created_at")
     private LocalDateTime createdAt;
-    //데이터가 마지막에 수정된 날짜 및 시간을 자동 저장
+    // 데이터가 마지막에 수정된 날짜 및 시간을 자동 저장
     @LastModifiedDate
     @Column(name="updated_at")
     private LocalDateTime updatedAt;
 
     @Builder
-    public Article(String title, String content, String writer) {
+    public Article(String title, String content, String author){
         this.title = title;
         this.content = content;
-        this.writer = writer;
+        this.author = author;
     }
-    public void update(String title, String content) {
+    public void update(String title, String content){
         this.title = title;
         this.content = content;
     }

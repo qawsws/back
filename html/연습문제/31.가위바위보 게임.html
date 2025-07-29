@@ -1,68 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>31.가위바위보 게임</title>
-    <style>
-        body{background-color: #F8F9FB;}
-        #wrap{
-            display: flex;
-            width: 50%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .centerArea{
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        /* .imgArea{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        } */
-        /* button{
-            margin: 0;
-            border: 1px solid rgb(173, 172, 172);
-            border-radius: 5px;
-        } */
-    </style>
-</head>
-<body>
-    <div id="wrap">
-        <div class="imgArea">
-            <img src="../images/가위.png" alt="user">
-            <p>가위</p>
-        </div>
-        <div class="centerArea">
-            <h3>이겼습니다</h3>
-            <p>VS</p>
-            <div>
-                <button>✌</button>
-                <button>👊</button>
-                <button>🖐</button>
+/* 
+가위바위보 게임 만드는 로직
+1. 박스 두개 만들기(사용자-컴퓨터, 사진, 결과표시가 들어간다) done
+2. 가위,바위,보 버튼이 있다 done
+3. 버튼을 클릭하면 클릭한 값이 박스에 보인다 done
+4. 컴퓨터는 랜덤하게 아이템이 선택 된다
+5. 3번과 4번의 결과를 가지고 승패를 따진다
+6. 5번의 결과에 따라 박스 테두리 컬러가 바뀐다 (이기면 그린, 지면 레드, 비기면 블랙)
+*/
+const choice = {
+    rock: {
+        name: 'Rock',
+        img: 'https://cdn-icons-png.flaticon.com/512/1527/1527445.png',
+    },
+    scissor: {
+        name: 'Scissor',
+        img: 'https://cdn-icons.flaticon.com/png/512/4958/premium/4958318.png?token=exp=1660905885~hmac=37608b675e9087a866260f1bec296283',
+    },
+    paper: {
+        name: 'Paper',
+        img: 'https://cdn-icons-png.flaticon.com/512/1828/1828248.png',
+    },
+};
+function App() {
+    const [userSelect, setUserSelect] = useState(null);
+    const [computerSelect, setComputerSelect] = useState(null);
+    const play = (userChoice) => {
+        //userSelect = choice[userChoice] 로 사용하면 안됨
+        setUserSelect(choice[userChoice]); //함수 안의 매개변수로서 작동하게 해야함
+        let computerChoice = randomChoice();
+        setComputerSelect(computerChoice);
+    };
+    const randomChoice = () => {
+        let itemArray = Object.keys(choice); //키값을 배열화 한다
+        console.log('배열 만들기!', itemArray);
+        //랜덤한 숫자값 들고오기
+        let randomItem = Math.floor(Math.random() * itemArray.length); //랜덤값을 소수점 버리고 0,1,2 로 만들어준다
+        let final = itemArray[randomItem];
+        return choice[final];
+    };
+    return (
+        <div>
+            <div className="main">
+                <Box title="You" item={userSelect} />
+                <Box title="computer" item={computerSelect} />
+            </div>
+            <div className="main">
+                <button onClick={() => play('scissor')}>가위</button>
+                <button onClick={() => play('rock')}>바위</button>
+                <button onClick={() => play('paper')}>보</button>
             </div>
         </div>
-        <div class="imgArea">
-            <img src="../images/바위.png" alt="computer">
-            <p>바위</p>
-        </div>
-    </div>
-    <script>
-        // 버튼을 눌렀을때 왼쪽의 이미지가 버튼에 맞게 변하도록
-        // 컴퓨터가 랜덤으로 가위,바위,보 중에 하나를 설정하도록 
-        // 0~2까지의 랜덤값 저장 (0:가위, 1:바위, 2:보)
-        const computer = Math.floor(Math.random()*3);
-        // 사람과 컴퓨터의 값을 비교하여 승패를 설정하도록
+    );
+}
 
-        computer.style.display = "none";
-        // 태그의 class에서 on 삭제
-        computer.classList.remove("on")
-        // 태그의 class에서 on 추가
-        computer.classList.add("on")
-
-    </script>
-</body>
-</html>
+export default App;

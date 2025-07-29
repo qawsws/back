@@ -28,10 +28,18 @@ public class User implements UserDetails {
     private String email;
     @Column(name="password")
     private String password;
+    @Column(name="nickname", unique=true)
+    private String nickname;
+
     @Builder
-    public User(String email, String password, String auth){
+    public User(String email, String password, String nickname){
         this.email = email;
         this.password = password;
+        this.nickname = nickname;
+    }
+    public User update(String nickname){
+        this.nickname = nickname;
+        return this;
     }
 
     @Override
@@ -39,30 +47,28 @@ public class User implements UserDetails {
         return List.of(new SimpleGrantedAuthority("USER"));
     }
 
+    // 로그인시 이메일을 ID로 사용하는 설정
     @Override
     public String getUsername() {
         return email;
     }
-
     @Override
     public String getPassword() {
         return password;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
-
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
     @Override
     public boolean isEnabled() {
         return true;
